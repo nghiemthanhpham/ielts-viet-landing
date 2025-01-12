@@ -56,16 +56,92 @@ export default function HomeContent() {
 
   return (
     <main id="body" className="space-y-6">
-      <Card className="relative overflow-hidden rounded-none shadow-none">
-        <Image
-          src={IMAGES.SUB_BANNER}
-          alt="logo"
-          className="w-full lg:h-[480px] lg:rounded-md object-cover"
-          width={1920}
-          height={0}
-          priority
-        />
-      </Card>
+      <div className="w-full flex flex-col lg:flex-row justify-center items-center gap-8">
+        <div className="flex w-full lg:w-1/2 lg:hidden justify-center items-start relative pt-10">
+          <div className="w-5/6 min-h-[250px] flex justify-center items-center border border-[rgb(var(--secondary-rgb))] rounded-lg">
+            <Image
+              src={IMAGES.HOME_MAIN_THUMBNAIL}
+              alt="alt"
+              className="rounded-lg"
+              width={1000}
+              height={1000}
+            />
+          </div>
+        </div>
+        <div className="w-4/5 lg:w-1/2 flex flex-col justify-center items-start gap-3 lg:gap-8">
+          <h2 className="text-2xl lg:text-4xl font-bold text-gray-800">
+            Học <span className="text-[rgb(var(--secondary-rgb))]">IELTS</span> cùng các chuyên gia đầu ngành
+          </h2>
+          <ul className="text-gray-700">
+            <li>✔️ Phương pháp độc quyền, tiết kiệm 40% thời gian</li>
+            <li>✔️ 80% giảng viên là cựu giám khảo IELTS</li>
+            <li>✔️ Hệ thống AI độc quyền 4 kỹ năng</li>
+            <li>✔️ Hỗ trợ toàn diện từ giáo viên bản ngữ</li>
+            <li>✔️ Cam kết đầu ra – 15 năm uy tín</li>
+          </ul>
+          <div className="flex gap-4">
+            <Link href="#">
+              <button className="text-[11px] lg:text-base bg-[rgb(var(--secondary-rgb))] hover:opacity-80 transition duration-300 text-white font-semibold px-4 py-2 rounded-full">
+                Test trình độ IELTS miễn phí
+              </button>
+            </Link>
+            <Link href="#">
+              <button className="text-[11px] lg:text-base border border-[rgb(var(--secondary-rgb))] text-[rgb(var(--secondary-rgb))] hover:text-white hover:bg-[rgb(var(--secondary-rgb))] hover:border-[rgb(var(--secondary-rgb))] transition duration-300 font-semibold px-4 py-2 rounded-full">
+                Xem lịch khai giảng
+              </button>
+            </Link>
+          </div>
+          <div className="flex items-center gap-4">
+            <Image src="https://ktdcgroup.vn/wp-content/uploads/2024/10/hero-image.png" alt="alt" className="w-28 h-auto rounded-full" width={112} height={100} />
+            <span className="text-gray-700 font-semibold">500+ học viên tại Cần Thơ</span>
+          </div>
+          <div className="w-full flex justify-between items-center">
+            <div className="flex items-center gap-4">
+              <Image src="https://ktdcgroup.vn/wp-content/uploads/2024/06/british-council-logo.png" alt="alt" className="w-20" width={80} height={100} />
+              <Image
+                src="https://ktdcgroup.vn/wp-content/uploads/2024/05/logo-idp.svg"
+                alt="alt" className="w-20"
+                width={80}
+                height={100}
+              />
+            </div>
+            <div className="flex items-center gap-4">
+              <Link href="#">
+                <div className="flex items-center bg-orange-100 p-2 rounded-full">
+                  <Image
+                    src="https://ktdcgroup.vn/wp-content/uploads/2024/10/google-icon.png"
+                    alt="alt"
+                    className="w-6 h-6"
+                    width={24}
+                    height={24} />
+                </div>
+              </Link>
+              <Link href="#">
+                <div className="flex items-center bg-orange-100 p-2 rounded-full">
+                  <Image
+                    src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"
+                    alt="alt"
+                    className="w-6 h-6"
+                    width={24}
+                    height={24}
+                  />
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="hidden w-1/2 lg:flex justify-end items-start relative">
+          <div className="w-5/6 flex justify-center items-center border border-[rgb(var(--secondary-rgb))] rounded-lg">
+            <Image
+              src={IMAGES.HOME_MAIN_THUMBNAIL}
+              alt="alt"
+              className="rounded-lg"
+              width={1000}
+              height={1000}
+            />
+          </div>
+        </div>
+      </div>
       <div className="mt-4 text-center px-4 lg:py-8">
         <h3 className="text-lg lg:text-2xl font-bold text-navy-blue mb-4 lg:mb-8">DANH MỤC SẢN PHẨM</h3>
         <div className="flex justify-center space-x-4">

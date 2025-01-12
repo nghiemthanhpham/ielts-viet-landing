@@ -51,6 +51,20 @@ export default function Header() {
         window.location.href = ROUTES.HOME
     }
 
+    const [isFixed, setIsFixed] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const headerHeight = document.querySelector('.header-top')?.clientHeight || 0;
+            setIsFixed(window.scrollY > headerHeight + 100);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     return (
         <div className='w-full flex flex-col justify-center items-center'>
             <header className="w-full lg:w-3/4 relative bg-[rgb(var(--quaternary-rgb))] lg:bg-white p-4 lg:px-0 lg:py-6 flex items-center justify-between">
@@ -168,9 +182,13 @@ export default function Header() {
                     </div>
                 )}
             </header>
-            <div className='w-full bg-orange-700 hidden lg:flex justify-center items-center'>
-                <div className='w-3/4 text-white flex justify-between items-center py-5'>
-                    <a href={`${ROUTES.HOME}`} className={`${checkTabEnable(ROUTES.HOME, pathname) ? 'border px-3 py-1 rounded-md' : ''} font-semibold`}>TRANG CHỦ</a>
+            <div className='w-full bg-orange-500 hidden lg:flex justify-center items-center'>
+                <div
+                    // className='w-3/4 text-white flex justify-between items-center py-5'
+                    className={`w-3/4 text-white flex justify-between items-center py-5  ${isFixed ? 'fixed top-0 left-1/2 -translate-x-1/2 z-50 w-full border-none' : ''
+                        }`}
+                >
+                    <a href={`${ROUTES.HOME}`} className={`${checkTabEnable(ROUTES.HOME, pathname) ? 'border px-3 py-1 rounded-md bg-white text-black' : ''} font-semibold`}>TRANG CHỦ</a>
                     <a href={`${ROUTES.ABOUT}`} className={`${checkTabEnable(ROUTES.ABOUT, pathname) ? 'border px-3 py-1 rounded-md' : ''} font-semibold`}>VỀ CHÚNG TÔI</a>
                     <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'border px-3 py-1 rounded-md' : ''} font-semibold`}>ÉP PLASTIC</a>
                     <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'border px-3 py-1 rounded-md' : ''} font-semibold`}>ẢNH KHUNG VIỀN</a>
