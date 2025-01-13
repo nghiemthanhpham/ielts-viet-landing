@@ -7,4 +7,8 @@ export const IMAGES = {
   LOGO: "/logo.png",
   HOME_MAIN_THUMBNAIL:
     "http://res.cloudinary.com/farmcode/image/upload/v1736623359/ielts-viet/home-main-thumbnail_rvzaga.jpg",
+  INTRODUCE_COURSE_1:
+    "https://res.cloudinary.com/farmcode/image/upload/v1736749894/ielts-viet/introduce-course-1_dgxwts.jpg",
+  INTRODUCE_COURSE_2:
+    "https://res.cloudinary.com/farmcode/image/upload/v1736749949/ielts-viet/introduce-course-2_cajy6m.jpg",
 };

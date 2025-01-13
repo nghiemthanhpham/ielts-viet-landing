@@ -8,8 +8,9 @@ import { IMAGES } from '@/utils/image';
 const Footer = () => {
     return (
         <footer className="w-full flex flex-col justify-center items-center bg-[rgb(var(--quaternary-rgb))] pt-8 space-y-8">
-            <div className='w-full lg:w-3/4 flex flex-col lg:flex-row gap-4 lg:gap-20'>
-                <div className="flex flex-col px-4 text-center lg:text-start space-y-4">
+            <div className='lg:grid lg:grid-cols-12 w-full lg:w-3/4 flex flex-col lg:flex-row gap-4 lg:gap-20'>
+
+                <div className="lg:col-span-4 flex flex-col px-4 text-center lg:text-start space-y-4">
                     <div className="flex items-center justify-center lg:justify-start">
                         <Image
                             src={IMAGES.LOGO}
@@ -18,10 +19,10 @@ const Footer = () => {
                             height={32}
                             priority
                         />
-                        <span className="ml-2 text-xl font-bold">IN ẢNH TRỰC TUYẾN</span>
+                        <span className="ml-2 text-xl font-bold">IELTS VIỆT</span>
                     </div>
                     <p className="text-gray-700 max-w-[400px]">
-                        Chuyên cung cấp các sản phẩm khung ảnh và album ảnh chất lượng cao, uy tín.
+                        Thông qua IELTS, khai phá tiềm năng người học - Kiến tạo cộng đồng người Việt trẻ biết học hỏi tự chủ.
                     </p>
                     <div className='flex flex-row justify-center lg:justify-start items-center gap-4'>
                         <Image
@@ -54,6 +55,7 @@ const Footer = () => {
                         />
                     </div>
                 </div>
+
                 <div className="flex lg:hidden flex-col lg:w-80 py-6 lg:py-0 px-4 space-y-4">
                     <div className="">
                         <Input
@@ -63,12 +65,13 @@ const Footer = () => {
                         />
                     </div>
                     <Button
-                        className="w-full bg-[rgb(var(--primary-rgb))] hover:bg-[#6B3410] text-white py-3"
+                        className="w-full bg-[rgb(var(--secondary-rgb))] hover:bg-[#6B3410] text-white py-3"
                     >
-                        Đăng ký
+                        Đăng ký tư vấn
                     </Button>
                 </div>
-                <div className="px-4 space-y-4">
+
+                <div className="lg:col-span-4 px-4 space-y-4">
                     <h3 className="text-xl font-bold text-navy-900">Thông tin liên hệ</h3>
                     <div className="space-y-4">
                         <div className="flex items-start gap-3">
@@ -83,7 +86,7 @@ const Footer = () => {
                         </div>
                         <div className="flex items-center gap-3">
                             <Mail className="w-5 h-5" />
-                            <p className="text-gray-700">inanhtructuyen.2024@gmail.com</p>
+                            <p className="text-gray-700">ieltsviet.edu.vn</p>
                         </div>
                         <div className="flex items-center gap-3">
                             <Clock className="w-5 h-5" />
@@ -91,54 +94,24 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="px-4 space-y-4 mt-4 lg:mt-0">
-                    <h3 className="text-xl font-bold text-navy-900">Phương thức thanh toán</h3>
+
+                <div className="lg:col-span-4 px-4 space-y-4 mt-4 lg:mt-0">
+                    <h3 className="text-xl font-bold text-navy-900">Địa chỉ</h3>
                     <div className="space-y-4">
-                        <div className="flex items-center gap-3">
-                            <Image
-                                src="https://cdn-icons-png.flaticon.com/128/1052/1052866.png"
-                                alt="logo"
-                                width={24}
-                                height={24}
-                                priority
-                            />
-                            <p className="text-gray-700">COD (Tiền mặt)</p>
+                        <div className="flex flex-col items-start gap-1 ">
+                            <div>Cơ sở 1: </div>
+                            <p className="text-gray-700">Khu dân cư Thới Nhựt 106 Nguyễn Minh Quang, P. An Khánh, Q. Ninh Kiều, TP. Cần Thơ</p>
                         </div>
-                        <div className="flex items-center gap-3">
-                            <Image
-                                src="https://cdn-icons-png.flaticon.com/128/1341/1341632.png"
-                                alt="logo"
-                                width={24}
-                                height={24}
-                                priority
-                            />
-                            <p className="text-gray-700">Ngân hàng</p>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <Image
-                                src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png"
-                                alt="logo"
-                                width={24}
-                                height={24}
-                                priority
-                            />
-                            <p className="text-gray-700">Momo</p>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <Image
-                                src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Icon-VNPAY-QR.png"
-                                alt="logo"
-                                width={24}
-                                height={24}
-                                priority
-                            />
-                            <p className="text-gray-700">VNPay</p>
+                        <div className="flex flex-col items-start gap-1 ">
+                            <div>Cơ sở 2: </div>
+                            <p className="text-gray-700">Khu dân cư Thới Nhựt 172c Nguyễn Tri Phương, P. An Khánh, Q. Ninh Kiều, TP. Cần Thơ</p>
                         </div>
                     </div>
                 </div>
+
             </div>
             <div className="w-full text-center text-gray-600 py-4 bg-white">
-                Copyright © 2025 In Ảnh Trực Tuyến.
+                Copyright © 2025 IELTS VIỆT.
             </div>
         </footer>
     );

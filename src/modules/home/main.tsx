@@ -2,24 +2,22 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { IMAGES } from '@/utils/image';
-import { Users2 } from 'lucide-react';
 import { DATA } from '@/utils/data';
 import "swiper/css";
-import { Swiper, SwiperSlide } from "swiper/react";
 import Link from 'next/link';
 import { ROUTES } from '@/utils/route';
 import { ProductService } from '@/services/product';
 import { BlogService } from '@/services/blog';
 import { GlobalComponent } from '@/components/global';
+import LearnerSlider from './components/learners.slider';
 
 export default function HomeContent() {
 
   const reviews = DATA.REVIEWS as any
+  const slogans = DATA.SLOGANS
   const [products, setProducts] = useState([] as any)
   const [filteredData, setFilteredData] = useState([] as any)
   const [blogs, setBlogs] = useState([] as any)
@@ -142,72 +140,105 @@ export default function HomeContent() {
           </div>
         </div>
       </div>
-      <div className="mt-4 text-center px-4 lg:py-8">
-        <h3 className="text-lg lg:text-2xl font-bold text-navy-blue mb-4 lg:mb-8">DANH MỤC SẢN PHẨM</h3>
+      <div className='my-72'>
+        <div className="w-screen bg-[rgb(var(--quaternary-rgb))] py-8 my-16 -translate-x-[0%] md:-translate-x-[12.5%] lg:-translate-x-[13%] overflow-hidden">
+          <div className="flex justify-center items-center gap-4 animate-marquee whitespace-nowrap">
+            {slogans.map((item: any, index: any) => (
+              <div key={`item-${index}`} className="bg-white px-10 py-2 rounded-lg shadow-md text-center">
+                <h3 className="text-[rgb(var(--secondary-rgb))] font-bold text-lg">{item.title}</h3>
+                <p className="text-gray-600">{item.content}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="text-center px-4 lg:py-4">
+        <h3 className="text-lg lg:text-2xl font-bold text-navy-blue mb-4 lg:mb-8">DANH MỤC KHÓA HỌC</h3>
         <div className="flex justify-center space-x-4">
           <Link href={`${ROUTES.PRODUCT}`}>
             <GlobalComponent.CategoryCard
-              title="Ép Plastic"
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-hard-drive"><line x1="22" x2="2" y1="12" y2="12" /><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" /><line x1="6" x2="6.01" y1="16" y2="16" /><line x1="10" x2="10.01" y1="16" y2="16" /></svg>}
+              title="Khóa IELTS 4 kỹ năng"
+              icon={
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-graduation-cap"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" /><path d="M22 10v6" /><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" /></svg>
+                // <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-hard-drive"><line x1="22" x2="2" y1="12" y2="12" /><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" /><line x1="6" x2="6.01" y1="16" y2="16" /><line x1="10" x2="10.01" y1="16" y2="16" /></svg>
+              }
             />
           </Link>
           <Link href={`${ROUTES.PRODUCT}`}>
             <GlobalComponent.CategoryCard
-              title="Khung ảnh"
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-frame"><line x1="22" x2="2" y1="6" y2="6" /><line x1="22" x2="2" y1="18" y2="18" /><line x1="6" x2="6" y1="2" y2="22" /><line x1="18" x2="18" y1="2" y2="22" /></svg>}
-            />
-          </Link>
-          <Link href={`${ROUTES.PRODUCT}`}>
-            <GlobalComponent.CategoryCard
-              title="Album"
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-images"><path d="M18 22H4a2 2 0 0 1-2-2V6" /><path d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18" /><circle cx="12" cy="8" r="2" /><rect width="16" height="16" x="6" y="2" rx="2" /></svg>}
+              title="Khóa IELTS 2 kỹ năng"
+              icon={
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-book-copy"><path d="M2 16V4a2 2 0 0 1 2-2h11" /><path d="M22 18H11a2 2 0 1 0 0 4h10.5a.5.5 0 0 0 .5-.5v-15a.5.5 0 0 0-.5-.5H11a2 2 0 0 0-2 2v12" /><path d="M5 14H4a2 2 0 1 0 0 4h1" /></svg>
+                // <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-frame"><line x1="22" x2="2" y1="6" y2="6" /><line x1="22" x2="2" y1="18" y2="18" /><line x1="6" x2="6" y1="2" y2="22" /><line x1="18" x2="18" y1="2" y2="22" /></svg>
+              }
             />
           </Link>
         </div>
       </div>
       <div className="p-4 md:p-0 lg:p-0 space-y-8">
         <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-4'>
-          <div className="rounded-lg overflow-hidden border border-dashed border-[rgb(var(--primary-rgb))] p-4">
+          <div className="grid grid-rows-2 lg:grid-cols-12 gap-6 rounded-lg overflow-hidden border border-dashed border-[rgb(var(--secondary-rgb))] p-4">
             <Image
-              src={IMAGES.SUB_BANNER}
+              src={IMAGES.INTRODUCE_COURSE_1}
               alt="alt"
-              className="w-full h-48 object-cover rounded-lg"
+              className="row-span-6 lg:col-span-5 w-full h-full object-cover rounded-lg"
               width={200}
               height={200}
               priority
             />
-            <div className="text-center mt-4">
-              <p className="text-gray-600">Khuyến mãi cho người mới</p>
-              <h2 className="text-xl font-semibold text-black">Thiết kế gia công sản phẩm</h2>
-              <Button
-                className="w-full md:w/1-3 lg:w-1/4 bg-[rgb(var(--primary-rgb))] hover:bg-[#6B3410] text-white px-8 mt-4"
-              >
-                Liên hệ ngay
-              </Button>
+            <div className="row-span-6 lg:col-span-7 text-left mt-4">
+              <h3 className="text-xl lg:text-2xl font-extrabold text-gray-800">Khóa học 1</h3>
+              <div className="flex justify-start items-center gap-2 my-4">
+                <p className="text-[rgb(var(--secondary-rgb))] font-semibold text-lg">2.000.000 đ</p>
+                <p className="text-gray-500 text-sm">36 giờ (8 tuần)</p>
+              </div>
+              <ul className="mt-2 text-gray-700 text-sm lg:text-base space-y-1">
+                {DATA.IELTSROADMAP[0].target.map((tg, index) => (
+                  <li key={index}>✔️ {tg}</li>
+                ))}
+              </ul>
+              <div className="flex justify-center">
+                <Button
+                  className="w-full md:w/1-3 lg:w-2/5 bg-[rgb(var(--secondary-rgb))] hover:bg-[#6B3410] text-white mt-4"
+                >
+                  Đăng ký ngay
+                </Button>
+              </div>
             </div>
           </div>
-          <div className="hidden lg:flex flex-col rounded-lg overflow-hidden border border-dashed border-[rgb(var(--primary-rgb))] p-4">
+          <div className="hidden lg:grid grid-rows-2 lg:grid-cols-12 gap-6 rounded-lg overflow-hidden border border-dashed border-[rgb(var(--secondary-rgb))] p-4">
             <Image
-              src={IMAGES.SUB_BANNER}
+              src={IMAGES.INTRODUCE_COURSE_2}
               alt="alt"
-              className="w-full h-48 object-cover rounded-lg"
+              className="row-span-6 lg:col-span-5 w-full h-full object-cover rounded-lg"
               width={200}
               height={200}
               priority
             />
-            <div className="text-center mt-4">
-              <p className="text-gray-600">Khuyến mãi cho người mới</p>
-              <h2 className="text-xl font-semibold text-black">Thiết kế gia công sản phẩm</h2>
-              <Button
-                className="w-full md:w/1-3 lg:w-1/4 bg-[rgb(var(--primary-rgb))] hover:bg-[#6B3410] text-white px-8 mt-4"
-              >
-                Liên hệ ngay
-              </Button>
+            <div className="row-span-6 lg:col-span-7 text-left mt-4">
+              <h3 className="text-xl lg:text-2xl font-extrabold text-gray-800">Khóa học 2</h3>
+              <div className="flex justify-start items-center gap-2 my-4">
+                <p className="text-[rgb(var(--secondary-rgb))] font-semibold text-lg">2.000.000 đ</p>
+                <p className="text-gray-500 text-sm">36 giờ (8 tuần)</p>
+              </div>
+              <ul className="mt-2 text-gray-700 text-sm lg:text-base space-y-1">
+                {DATA.IELTSROADMAP[0].target.map((tg, index) => (
+                  <li key={index}>✔️ {tg}</li>
+                ))}
+              </ul>
+              <div className="flex justify-center">
+                <Button
+                  className="w-full md:w/1-3 lg:w-2/5 bg-[rgb(var(--secondary-rgb))] hover:bg-[#6B3410] text-white mt-4"
+                >
+                  Đăng ký ngay
+                </Button>
+              </div>
             </div>
           </div>
         </div>
         <div className='lg:py-6'>
-          <h2 className="text-lg lg:text-2xl font-bold text-black mb-4 lg:mb-8">SẢN PHẨM NỔI BẬT</h2>
+          <h2 className="text-lg lg:text-2xl font-bold text-black mb-4 lg:mb-8">KHÓA HỌC NỔI BẬT</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
             {products?.slice(0, 6)?.map((product: any, index: any) => (
               <div key={index}>
@@ -227,16 +258,20 @@ export default function HomeContent() {
       </div>
       <div className="md:hidden lg:hidden flex flex-col p-4 md:p-0 lg:p-0 space-y-4 pt-0">
         <div className="text-center space-y-2">
-          <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-navy-900">TOP BÁN CHẠY</h2>
+          <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-navy-900">KHÓA HỌC YÊU THÍCH</h2>
         </div>
         <div className="flex flex-col bg-[rgb(var(--quaternary-rgb))] rounded-lg p-4 space-y-3">
           {[
             { label: "ẢNH PLASTIC", cate: 'plastic' },
             { label: "KHUNG ẢNH", cate: 'frame' },
             { label: "ALBUM", cate: 'album' },
+            { label: "MỤC TIÊU 4.5+", cate: 'album1' },
+            { label: "MỤC TIÊU 5.5+", cate: 'album2' },
+            { label: "MỤC TIÊU 6.0+", cate: 'album3' },
+            { label: "MỤC TIÊU 6.5+", cate: 'album4' },
           ].map(({ label, cate }) => (
             selectedCategory === cate ? (
-              <div key={cate} className="bg-[rgb(var(--primary-rgb))] text-white py-3 px-4 rounded-lg flex items-center">
+              <div key={cate} className="bg-[rgb(var(--secondary-rgb))] text-white py-3 px-4 rounded-lg flex items-center">
                 <div className="w-2 h-2 bg-white rounded-full mr-2"></div>
                 <span className='text-sm font-bold'>{label}</span>
               </div>
@@ -268,71 +303,82 @@ export default function HomeContent() {
         </div>
       </div>
       <div className="p-4 md:p-0 lg:p-0 space-y-10 pt-0">
-        <div className="space-y-4 lg:px-40">
-          <h2 className="text-2xl font-bold text-center text-navy-900">
-            KHÁCH HÀNG NÓI GÌ?
-          </h2>
-          <Swiper
-            onSwiper={handleSwiper}
-            slidesPerView={1}
-            spaceBetween={10}
-            navigation={false}
-            autoplay={{ delay: 5000 }}
-            speed={800}
-          >
-            {reviews?.map((review: any, index: any) => (
-              <SwiperSlide key={index}>
-                <Card className="border-2 border-dashed border-gray-300 py-6 px-8 relative">
-                  <div className="flex justify-center mb-4">
-                    <div className="bg-[rgb(var(--quaternary-rgb))] p-4 rounded-full">
-                      <Users2 className="w-8 h-8 text-black" />
-                    </div>
-                  </div>
-                  <p className="text-center text-gray-700 text-lg mb-4">
-                    {review?.review}
-                  </p>
-                  <div className="text-center">
-                    <h3 className="font-bold text-lg text-black">{review?.name}</h3>
-                    <p className="text-gray-500">{review?.role}</p>
-                  </div>
-                </Card>
-              </SwiperSlide>
-            ))}
-            <button
-              onClick={() => swiperInstance?.slidePrev()}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-10">
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button
-              onClick={() => swiperInstance?.slideNext()}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-10">
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </Swiper>
-        </div>
         <div className="space-y-4 lg:py-10">
           <h2 className="text-2xl font-bold text-navy-900 text-center">
-            XU HƯỚNG HIỆN ĐẠI
+            ĐẶC QUYỀN CỦA HỌC VIÊN IELTS VIỆT
           </h2>
-          <div className="relative flex md:hidden lg:hidden">
-            <Image
-              src={IMAGES.BANNER}
-              alt="alt"
-              className="w-full rounded-lg"
-              width={200}
-              height={0}
-              priority
-            />
+          <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 mx-auto">
+            <div className="bg-orange-50 p-6 rounded-lg shadow-md">
+              <div className="flex justify-start items-center gap-3">
+                <Image
+                  src="https://cdn-icons-png.flaticon.com/128/10435/10435128.png"
+                  alt="img"
+                  className="rounded-lg"
+                  width={40}
+                  height={0}
+                />
+                <h3 className="text-lg font-bold text-gray-800">Phương pháp Total Immersion</h3>
+              </div>
+              <p className="mt-2 text-gray-600">
+                Chúng tôi tạo môi trường học tập 100% tiếng Anh với phương pháp độc quyền, giúp học viên tiến bộ nhanh hơn 40% so với cách học truyền thống. Không chỉ hướng đến điểm số, chúng tôi tập trung vào khả năng ứng dụng kiến thức thực tế của học viên.
+              </p>
+            </div>
+            <div className="bg-orange-50 p-6 rounded-lg shadow-md">
+              <div className="flex justify-start items-center gap-3">
+                <Image
+                  src="https://cdn-icons-png.flaticon.com/128/5585/5585472.png"
+                  alt="img"
+                  className=""
+                  width={40}
+                  height={0}
+                />
+                <h3 className="text-lg font-bold text-gray-800">Đội ngũ giảng viên đầu ngành</h3>
+              </div>
+              <p className="mt-2 text-gray-600">
+                Được dẫn dắt bởi các cựu giám khảo IELTS, giảng viên với chứng chỉ CELTA, DELTA và nhiều năm kinh nghiệm, học viên nhận được sự hỗ trợ 1:1 cho Speaking và Writing. Mỗi giảng viên đều tận tâm điều chỉnh phương pháp giảng dạy phù hợp nhất với phong cách và nhu cầu học tập của từng học viên.
+              </p>
+            </div>
+            <div className="bg-orange-50 p-6 rounded-lg shadow-md">
+              <div className="flex justify-start items-center gap-3">
+                <Image
+                  src="https://cdn-icons-png.flaticon.com/128/6873/6873405.png"
+                  alt="img"
+                  className=""
+                  width={40}
+                  height={0}
+                />
+                <h3 className="text-lg font-bold text-gray-800">Công nghệ AI tiên tiến</h3>
+              </div>
+              <p className="mt-2 text-gray-600">
+                IELTS Việt là đơn vị đầu tiên tại Việt Nam ứng dụng AI để luyện tập đủ 4 kỹ năng IELTS. Hệ thống này cung cấp phản hồi chi tiết theo tiêu chuẩn IELTS, đồng thời nền tảng LMS hỗ trợ học viên luyện tập không giới hạn, mọi lúc, mọi nơi, đảm bảo lộ trình học tập tối ưu và hiệu quả.
+              </p>
+            </div>
+            <div className="bg-orange-50 p-6 rounded-lg shadow-md">
+              <div className="flex justify-start items-center gap-3">
+                <Image
+                  src="https://cdn-icons-png.flaticon.com/128/1642/1642322.png"
+                  alt="img"
+                  className=""
+                  width={40}
+                  height={0}
+                />
+                <h3 className="text-lg font-bold text-gray-800">Cam kết kết quả</h3>
+              </div>
+              <p className="mt-2 text-gray-600">
+                Với 15 năm kinh nghiệm đào tạo, chúng tôi cam kết đầu ra hoặc học lại miễn phí. Học viên còn nhận được sự hỗ trợ toàn diện về kiến thức, tâm lý và các kỹ năng cần thiết để sẵn sàng cho kỳ thi, mang đến sự an tâm tuyệt đối trên hành trình chinh phục IELTS.
+              </p>
+            </div>
           </div>
-          <div className="space-y-4 lg:text-center lg:px-20">
-            <p className="text-gray-700 leading-relaxed">
-              Mặc dù mùa xuân và mùa hè thường gắn liền với thời tiết ấm hơn, nhưng không phải lúc nào mọi chuyện cũng bắt đầu như vậy. Các nhà thiết kế đã trang bị cho bạn những chiếc áo khoác ngoài sang trọng để tăng thêm phong cách cho phong cách của bạn trong giai đoạn chuyển tiếp từ nhiệt độ lạnh hơn sang những buổi chiều ấm áp và đầy nắng. Ngay cả khi thời tiết ấm áp hơn vào mùa xuân tới, hãy thêm một chiếc áo blazer oversized kiểu dáng đẹp vào diện mạo nếu bạn muốn tạo điểm nhấn táo bạo cho phong cách của mình.
-            </p>
-          </div>
+        </div>
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-center text-navy-900">
+            HỌC VIÊN NÓI GÌ VỀ IELTS VIỆT?
+          </h2>
+          <LearnerSlider />
         </div>
       </div>
       <div className="p-4 md:p-0 lg:p-0 space-y-4">
-        <h2 className="text-2xl font-bold text-center text-navy-900">TIN TỨC</h2>
+        <h2 className="text-2xl font-bold text-center text-navy-900 mt-14">TIN TỨC</h2>
         <div className="space-y-2 lg:hidden flex flex-col">
           {blogs?.slice(0, 3)?.map((blog: any, index: any) => (
             <div key={index}>

@@ -9,6 +9,7 @@ import { Calendar } from 'lucide-react';
 import "swiper/css";
 import { HELPER } from '@/utils/helper';
 import { ROUTES } from '@/utils/route';
+import { DATA } from '@/utils/data';
 
 const BlogCard = ({ id, image, title, excerpt, date, author, isMain = false }: any) => (
   <Card onClick={() => window.location.href = `${ROUTES.BLOG}/${id}`} className={`cursor-pointer overflow-hidden ${isMain ? 'mb-4' : 'flex items-center gap-4 mb-4'}`}>
@@ -51,27 +52,32 @@ const ProductCard = (
   }: any) => (
   <Card className="bg-white h-full rounded-lg overflow-hidden">
     <div className="relative">
-      {hot && (
+      {/* {hot && (
         <div className="absolute top-2 left-2 bg-[rgb(var(--primary-rgb))] text-white px-2 py-1 rounded-md text-sm">
           Bán chạy
         </div>
-      )}
+      )} */}
       <Image src={image} alt={title} className="w-full h-48 object-cover" width={200} height={200} priority />
     </div>
     <div className="flex flex-col justify-between p-4">
-      <div className="flex items-center space-x-2">
-        <span className="text-xs lg:text-lg font-bold text-black">{HELPER.formatVND(price)}</span>
+      <div className="flex justify-center font-bold py-4 border-b-2 hover:text-[rgb(var(--secondary-rgb))] cursor-pointer">Khóa học mẫu</div>
+      <div className="flex justify-center items-stretch">
+        <div className="flex flex-col justify-around text-sm mt-2 px-2 border-r-2 pr-5 ">
+          <div className='font-bold text-[rgb(var(--secondary-rgb))]'>6.865.000 đ</div>
+          <div>Đầu vào: 5.0-6.0</div>
+        </div>
+        <div className="flex flex-col justify-around text-sm mt-2 px-2 pl-5">
+          <div>36 giờ (8 tuần)</div>
+          <div>Đầu ra: 7.0</div>
+        </div>
       </div>
-      <h3 className="text-xs lg:text-lg font-medium text-gray-900 line-clamp-2 mt-2">{title}</h3>
-      <div className="flex items-center mt-2">
-        {[...Array(5)].map((_, i) => (
-          <Star
-            key={i}
-            className={`w-3 h-3 ${i < 5 ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
-          />
+      <div className="text-sm flex flex-col items-center py-2">
+        <div className="text-[rgb(var(--secondary-rgb))] font-medium flex justify-self-center">★ Cam kết đầu ra</div>
+        {DATA.COURSE4SKILLS[0].commitment?.map((c4c, index) => (
+          <div key={index} className="flex justify-self-center">{c4c}</div>
         ))}
-        <span className="text-xs text-gray-500 ml-2">({sold} đã bán)</span>
       </div>
+      <button className="mt-5 px-4 py-2 bg-[rgb(var(--secondary-rgb))] text-white font-semibold rounded-full">Tìm hiểu thêm</button>
     </div>
   </Card>
 );

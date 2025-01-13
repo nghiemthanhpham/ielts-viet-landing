@@ -96,20 +96,27 @@ export default function Header() {
                     <Image
                         src={IMAGES.LOGO}
                         alt="logo"
-                        width={32}
-                        height={32}
+                        width={44}
+                        height={44}
                         priority
-                        className="hidden lg:flex rounded-full"
+                        className="hidden lg:flex"
                     />
-                    <span className="flex items-center justify-center mt-1 text-lg font-bold">IN ẢNH TRỰC TUYẾN</span>
+                    <div className="flex flex-col">
+                        <span className="font-extrabold text-2xl text-gray-800">IELTS Việt</span>
+                        <span className="text-sm font-medium text-[rgb(var(--secondary-rgb))]">English Center</span>
+                    </div>
                 </div>
                 <div className='flex justify-center items-center gap-4'>
-                    <div className='hidden border border-gray-400 rounded-full px-6 py-1 lg:flex justify-center items-center gap-2'>
-                        <PhoneCall size={15} /> Hotline: 0939.468.252
+                    <div className="hidden lg:flex items-center space-x-2 bg-[rgb(var(--quaternary-rgb))] px-4 py-2 rounded-full">
+                        <PhoneCall className="w-4 h-4" />
+                        <span className="text-gray-700 font-light">Hotline:</span>
+                        <span className="font-bold text-gray-800">093 921 77 18</span>
                     </div>
-                    {
-                        renderLogin(logined)
-                    }
+                    <a href="/" className="hidden lg:flex bg-[rgb(var(--secondary-rgb))] text-white font-semibold px-4 py-2 rounded-full">Đặt lịch hẹn</a>
+                    <div className="flex items-center space-x-2">
+                        <Image src="https://cdn-icons-png.flaticon.com/128/197/197473.png" alt="alt" width={20} height={20} />
+                        <span className="text-gray-700 font-semibold">VI</span>
+                    </div>
                 </div>
                 {open && (
                     <div className="absolute mt-2 top-16 left-0 h-[1000px] w-full bg-white shadow-md z-20">
@@ -134,67 +141,29 @@ export default function Header() {
                                     <NotepadText size={18} /> Tin tức
                                 </a>
                             </li>
-                            {
-                                logined
-                                &&
-                                (
-                                    <li className='font-bold '>
-                                        <a href={`${ROUTES.ACCOUNT}?tab=profile`} className="flex items-center justify-start gap-4 text-gray-700 hover:text-black">
-                                            <UserRound size={18} /> Hồ sơ cá nhân
-                                        </a>
-                                    </li>
-                                )
-                            }
-                            {
-                                logined
-                                &&
-                                (
-                                    <li className='font-bold '>
-                                        <a href={`${ROUTES.ACCOUNT}?tab=history`} className="flex items-center justify-start gap-4 text-gray-700 hover:text-black">
-                                            <History size={18} /> Lịch sử mua hàng
-                                        </a>
-                                    </li>
-                                )
-                            }
-                            {
-                                logined
-                                &&
-                                (
-                                    <li className='font-bold '>
-                                        <a href={`${ROUTES.ACCOUNT}?tab=order-single`} className="flex items-center justify-start gap-4 text-gray-700 hover:text-black">
-                                            <FolderPlus size={18} /> Tạo đơn hàng mới
-                                        </a>
-                                    </li>
-                                )
-                            }
-                            {
-                                logined
-                                &&
-                                (
-                                    <li className='font-bold '>
-                                        <button onClick={handleLogOut} className="flex items-center justify-start gap-4 text-orange-700 hover:text-black">
-                                            <LogOut size={18} />  Đăng xuất
-                                        </button>
-                                    </li>
-                                )
-                            }
+                            <li className='font-bold '>
+                                <a href={`${ROUTES.BLOG}`} className="flex items-center justify-start gap-4 text-gray-700 hover:text-black">
+                                    <NotepadText size={18} /> Đặt lịch hẹn
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 )}
             </header>
-            <div className='w-full bg-orange-500 hidden lg:flex justify-center items-center'>
-                <div
-                    // className='w-3/4 text-white flex justify-between items-center py-5'
-                    className={`w-3/4 text-white flex justify-between items-center py-5  ${isFixed ? 'fixed top-0 left-1/2 -translate-x-1/2 z-50 w-full border-none' : ''
-                        }`}
+            <div className='w-3/4 bg-white hidden lg:flex justify-center items-center border-b border-t px-5'>
+
+                <div className={`flex justify-center items-center ${isFixed ? 'w-full fixed top-0 left-1/2 -translate-x-1/2 z-50 bg-white hidden lg:flex justify-center items-center border-b border-t px-5' : 'w-full'
+                    }`}
                 >
-                    <a href={`${ROUTES.HOME}`} className={`${checkTabEnable(ROUTES.HOME, pathname) ? 'border px-3 py-1 rounded-md bg-white text-black' : ''} font-semibold`}>TRANG CHỦ</a>
-                    <a href={`${ROUTES.ABOUT}`} className={`${checkTabEnable(ROUTES.ABOUT, pathname) ? 'border px-3 py-1 rounded-md' : ''} font-semibold`}>VỀ CHÚNG TÔI</a>
-                    <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'border px-3 py-1 rounded-md' : ''} font-semibold`}>ÉP PLASTIC</a>
-                    <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'border px-3 py-1 rounded-md' : ''} font-semibold`}>ẢNH KHUNG VIỀN</a>
-                    <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'border px-3 py-1 rounded-md' : ''} font-semibold`}>PHOTOBOOK</a>
-                    <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'border px-3 py-1 rounded-md' : ''} font-semibold`}>BẢNG GIÁ</a>
-                    <a href={`${ROUTES.BLOG}`} className={`${checkTabEnable(ROUTES.BLOG, pathname) ? 'border px-3 py-1 rounded-md' : ''} font-semibold`}>TIN TỨC</a>
+                    <div className={`bg-white ${isFixed ? 'w-3/4' : 'w-full'} text-white flex justify-between items-center py-5`}>
+                        <a href={`${ROUTES.HOME}`} className={`${checkTabEnable(ROUTES.HOME, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''}  text-black`}>TRANG CHỦ</a>
+                        <a href={`${ROUTES.ABOUT}`} className={`${checkTabEnable(ROUTES.ABOUT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>VỀ CHÚNG TÔI</a>
+                        <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>ÉP PLASTIC</a>
+                        <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>ẢNH KHUNG VIỀN</a>
+                        <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>PHOTOBOOK</a>
+                        <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>BẢNG GIÁ</a>
+                        <a href={`${ROUTES.BLOG}`} className={`${checkTabEnable(ROUTES.BLOG, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>TIN TỨC</a>
+                    </div>
                 </div>
             </div>
         </div>
