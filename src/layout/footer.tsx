@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Home, Phone, Mail, Clock } from 'lucide-react';
+import { Home, Phone, Mail, Clock, House } from 'lucide-react';
 import Image from 'next/image';
 import { IMAGES } from '@/utils/image';
 
@@ -74,12 +74,12 @@ const Footer = () => {
                 <div className="lg:col-span-4 px-4 space-y-4">
                     <h3 className="text-xl font-bold text-navy-900">Thông tin liên hệ</h3>
                     <div className="space-y-4">
-                        <div className="flex items-start gap-3">
+                        {/* <div className="flex items-start gap-3">
                             <Home className="w-5 h-5 flex-shrink-0 mt-0.5" />
                             <p className="text-gray-700">
                                 Ninh Kiều, Cần Thơ
                             </p>
-                        </div>
+                        </div> */}
                         <div className="flex items-center gap-3">
                             <Phone className="w-5 h-5" />
                             <p className="text-gray-700">0939.468.252</p>
@@ -99,11 +99,17 @@ const Footer = () => {
                     <h3 className="text-xl font-bold text-navy-900">Địa chỉ</h3>
                     <div className="space-y-4">
                         <div className="flex flex-col items-start gap-1 ">
-                            <div>Cơ sở 1: </div>
+                            <div className='flex flex-row items-center gap-2'>
+                                <House size={20} />
+                                <div> Cơ sở 1: </div>
+                            </div>
                             <p className="text-gray-700">Khu dân cư Thới Nhựt 106 Nguyễn Minh Quang, P. An Khánh, Q. Ninh Kiều, TP. Cần Thơ</p>
                         </div>
                         <div className="flex flex-col items-start gap-1 ">
-                            <div>Cơ sở 2: </div>
+                            <div className='flex flex-row items-center gap-2'>
+                                <House size={20} />
+                                <div> Cơ sở 2: </div>
+                            </div>
                             <p className="text-gray-700">Khu dân cư Thới Nhựt 172c Nguyễn Tri Phương, P. An Khánh, Q. Ninh Kiều, TP. Cần Thơ</p>
                         </div>
                     </div>

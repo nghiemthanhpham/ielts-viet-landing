@@ -60,7 +60,7 @@ export default function BlogDetailClient() {
               height={0}
             />
           </div>
-          <div className="w-full border-dashed border border-gray-500 bg-[rgb(var(--tertiary-rgb))] rounded-lg py-2 px-4 z-10">
+          <div className="w-full border-dashed border border-gray-500 bg-[rgb(var(--quaternary-rgb))] rounded-lg py-2 px-4 z-10">
             <div className="flex flex-row gap-2">
               <p className="font-semibold">Tóm tắt bài viết </p>
               <div className="text-sm" onClick={toggleContent}>
@@ -78,11 +78,11 @@ export default function BlogDetailClient() {
               {isExpanded && currentData?.content}
             </div>
           </div>
-          <div className="w-full bg-[rgb(var(--tertiary-rgb))] rounded-lg mt-4 pt-3 pb-3 px-4 z-10">
+          <div className="w-full bg-[rgb(var(--quaternary-rgb))] rounded-lg mt-4 pt-3 pb-3 px-4 z-10">
             <p>{currentData?.content}</p>
           </div>
           <div className="w-full bg-white rounded-lg mt-4 py-4 z-10">
-            <div className="font-semibold text-md mb-4">BÀI VIẾT LIÊN QUAN</div>
+            <div className="font-semibold text-md text-xl mb-4">BÀI VIẾT LIÊN QUAN</div>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {blogs?.slice(0, 2)?.map((blogs: any, index: any) => (
                 <div key={index}>
@@ -91,10 +91,10 @@ export default function BlogDetailClient() {
                       <Image className="h-28 object-cover rounded-lg" src={blogs?.thumbnail || ""} alt="image" width={1000} height={1000} />
                     </div>
                     <div className="my-2">
-                      <p className="font-bold text-[15px] leading-5 line-clamp-2">{blogs?.title}</p>
+                      <p className="font-bold text-[15px] lg:text-lg leading-5 lg:leading-6 line-clamp-2">{blogs?.title}</p>
                     </div>
 
-                    <div className="line-clamp-3 text-xs">
+                    <div className="line-clamp-3 text-xs lg:text-md">
                       {blogs?.content}
                     </div>
                   </Link>

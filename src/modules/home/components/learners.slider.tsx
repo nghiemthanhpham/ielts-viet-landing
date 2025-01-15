@@ -55,13 +55,13 @@ const LearnerSlider = () => {
           autoplay={{ delay: 5000 }}
           speed={800}
           loop={true}
-          spaceBetween={20}
+          spaceBetween={5}
           slidesPerView={1}
           slidesPerGroup={1}
           breakpoints={{
             640: {
               slidesPerView: 3,
-              spaceBetween: 20,
+              spaceBetween: 5,
             },
           }}
           onSwiper={handleSwiper}
@@ -72,7 +72,7 @@ const LearnerSlider = () => {
               key={`slide-${slideIndex}`}
               className="flex justify-center"
             >
-              <div className="flex flex-row justify-around gap-6 py-10 ml-5">
+              <div className="flex flex-row justify-around pt-2 pb-10 px-2">
                 {slide?.map((learn, index) => (
                   <div className="bg-white rounded-lg shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] p-6 relative" key={index}>
                     <div className="flex items-center space-x-2 mb-4">

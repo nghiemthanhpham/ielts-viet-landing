@@ -4,10 +4,10 @@
 import { IMAGES } from '@/utils/image';
 import { ROUTES } from '@/utils/route';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { LoginModal } from './login';
 import Cookies from "js-cookie";
-import { FolderPlus, Gift, History, House, Info, LogOut, NotepadText, PhoneCall, UserRound } from 'lucide-react';
+import { Gift, House, Info, NotepadText, PhoneCall } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 export default function Header() {
@@ -18,7 +18,7 @@ export default function Header() {
 
     const pathname = usePathname()
 
-    const checkTabEnable = (tab: string, pathname: any) => {
+    const checkTabEnable = (tab: string, pathname: string) => {
         if (pathname === tab) {
             return true;
         } else {
@@ -46,11 +46,6 @@ export default function Header() {
         }
     }
 
-    const handleLogOut = () => {
-        Cookies.remove("isLogin");
-        window.location.href = ROUTES.HOME
-    }
-
     const [isFixed, setIsFixed] = useState(false);
 
     useEffect(() => {
@@ -64,6 +59,28 @@ export default function Header() {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
+
+    const [isOpenToggle, setIsOpenToggle] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+    const toggleDropdown = () => setIsOpenToggle((prev) => !prev);
+
+    const handleClickOutside = (event: MouseEvent) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+            setIsOpenToggle(false);
+        }
+    };
+
+    useEffect(() => {
+        if (isOpenToggle) {
+            document.addEventListener("mousedown", handleClickOutside);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isOpenToggle]);
 
     return (
         <div className='w-full flex flex-col justify-center items-center'>
@@ -133,7 +150,7 @@ export default function Header() {
                             </li>
                             <li className='font-bold '>
                                 <a href={`${ROUTES.PRODUCT}`} className="flex items-center justify-start gap-4 text-gray-700 hover:text-black">
-                                    <Gift size={18} /> Sản phẩm
+                                    <Gift size={18} /> Khóa học
                                 </a>
                             </li>
                             <li className='font-bold '>
@@ -158,10 +175,30 @@ export default function Header() {
                     <div className={`bg-white ${isFixed ? 'w-3/4' : 'w-full'} text-white flex justify-between items-center py-5`}>
                         <a href={`${ROUTES.HOME}`} className={`${checkTabEnable(ROUTES.HOME, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''}  text-black`}>TRANG CHỦ</a>
                         <a href={`${ROUTES.ABOUT}`} className={`${checkTabEnable(ROUTES.ABOUT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>VỀ CHÚNG TÔI</a>
-                        <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>ÉP PLASTIC</a>
+                        {/* <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>ÉP PLASTIC</a>
                         <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>ẢNH KHUNG VIỀN</a>
                         <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>PHOTOBOOK</a>
-                        <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>BẢNG GIÁ</a>
+                        <a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>BẢNG GIÁ</a> */}
+                        <div className="relative" ref={dropdownRef}>
+                            <div onClick={toggleDropdown} className="px-2 py-1 flex flex-row justify-center items-center gap-1 bg-opacity-60 bg-white cursor-pointer rounded-lg">
+                                <span className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>KHÓA HỌC</span>
+                                <div className={`transition-transform duration-300 ${isOpenToggle ? "-translate-y-0.5" : "-rotate-90"} mt-1`}>
+                                    <svg className="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="black" aria-hidden="true" data-slot="icon">
+                                        <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+                            {isOpenToggle && (
+                                <ul className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black absolute right-0 z-10 mt-2 w-[200px] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none py-2`}
+
+                                >
+                                    <li className='px-5 py-2'><a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>ÉP PLASTIC</a></li>
+                                    <li className='px-5 py-2'><a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>ẢNH KHUNG VIỀN</a></li>
+                                    <li className='px-5 py-2'><a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>PHOTOBOOK</a></li>
+                                    <li className='px-5 py-2'><a href={`${ROUTES.PRODUCT}`} className={`${checkTabEnable(ROUTES.PRODUCT, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>BẢNG GIÁ</a></li>
+                                </ul>
+                            )}
+                        </div>
                         <a href={`${ROUTES.BLOG}`} className={`${checkTabEnable(ROUTES.BLOG, pathname) ? 'font-extrabold !text-[rgb(var(--secondary-rgb))]' : ''} text-black`}>TIN TỨC</a>
                     </div>
                 </div>

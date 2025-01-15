@@ -14,6 +14,7 @@ import { ROUTES } from '@/utils/route';
 import { ProductService } from '@/services/product';
 import { HELPER } from '@/utils/helper';
 import { GlobalComponent } from '@/components/global';
+import { DATA } from '@/utils/data';
 
 export default function ProductDetailClient() {
 
@@ -27,7 +28,8 @@ export default function ProductDetailClient() {
   const init = async () => {
     const res = await ProductService.getAll()
     if (res && res.data.length > 0) {
-      const product = res.data?.find((pro: any) => pro._id.toString() === id);
+      // const product = res.data?.find((pro: any) => pro.id.toString() === id);
+      const product = DATA?.IELTSROADMAP?.find((pro: any) => pro.id.toString() === id);
       console.log(product);
       setCurrentData(product || null);
     }
@@ -65,7 +67,7 @@ export default function ProductDetailClient() {
           <nav className="flex items-center gap-2 text-sm text-gray-600 mb-4">
             <Link href={`${ROUTES.HOME}`} className="hover:text-black">Trang chủ</Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href={`${ROUTES.PRODUCT}`} className="hover:text-black">Sản phẩm</Link>
+            <Link href={`${ROUTES.PRODUCT}`} className="hover:text-black">Khóa học</Link>
             <ChevronRight className="w-4 h-4" />
             <p className="hover:text-black truncate">{currentData?.name?.slice(0, 14)}...</p>
           </nav>
@@ -77,15 +79,13 @@ export default function ProductDetailClient() {
                   onSlideChange={handleSlideChange}
                   slidesPerView={1}
                   spaceBetween={10}
-                  navigation={false}
-                >
+                  navigation={false}>
                   <Image
                     src={currentData?.thumbnail}
                     alt="Product Image"
                     className="object-cover rounded-sm"
                     fill
-                    priority
-                  />
+                    priority />
                   {currentData?.images?.map((proImg: any, index: any) => (
                     <SwiperSlide key={index}>
                       <div className="aspect-square w-full relative bg-gray-50">
@@ -102,16 +102,14 @@ export default function ProductDetailClient() {
                   {activeSlide !== 0 && (
                     <button
                       onClick={() => swiperInstance?.slidePrev()}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 z-10"
-                    >
+                      className="absolute left-4 top-1/2 -translate-y-1/2 z-10">
                       <ChevronLeft className="w-6 h-6" />
                     </button>
                   )}
                   {activeSlide !== (currentData?.images?.length ?? 0) - 1 && (
                     <button
                       onClick={() => swiperInstance?.slideNext()}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 z-10"
-                    >
+                      className="absolute right-4 top-1/2 -translate-y-1/2 z-10">
                       <ChevronRight className="w-6 h-6" />
                     </button>
                   )}
@@ -123,21 +121,18 @@ export default function ProductDetailClient() {
                     spaceBetween={16}
                     navigation={false}
                     centeredSlides={false}
-                    onSlideChange={handleThumbnailSlideChange}
-                  >
+                    onSlideChange={handleThumbnailSlideChange}>
                     {currentData?.images?.map((proImg: any, index: any) => (
                       <SwiperSlide key={index}>
                         <div
                           key={index}
                           className={`w-full h-28 rounded-sm overflow-hidden cursor-pointer relative transition-all duration-300 ${activeSlide === index ? 'border-[#6B3410]  border-2' : 'border-transparent'}`}
-                          onClick={() => handleThumbnailClick(index)}
-                        >
+                          onClick={() => handleThumbnailClick(index)}>
                           <Image
                             src={proImg}
                             alt={`variant ${index + 1}`}
                             className="object-cover"
-                            layout="fill"
-                          />
+                            layout="fill" />
                         </div>
                       </SwiperSlide>
                     ))}
@@ -171,8 +166,7 @@ export default function ProductDetailClient() {
                   </div>
                   <button
                     onClick={() => setIsExpanded(!isExpanded)}
-                    className="flex items-center gap-2 text-brown-700 hover:text-brown-800"
-                  >
+                    className="flex items-center gap-2 text-brown-700 hover:text-brown-800">
                     Xem thêm
                     <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                   </button>
@@ -186,8 +180,7 @@ export default function ProductDetailClient() {
                   </div>
                   <button
                     onClick={() => setIsExpanded(!isExpanded)}
-                    className="flex items-center gap-2 text-brown-700 hover:text-brown-800"
-                  >
+                    className="flex items-center gap-2 text-brown-700 hover:text-brown-800">
                     Xem thêm
                     <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                   </button>
@@ -198,18 +191,21 @@ export default function ProductDetailClient() {
         </div>
       </div>
       <div className='w-full px-4 lg:px-0 lg:w-3/4 flex flex-col justify-center items-start pb-4 lg:py-10'>
-        <h2 className="text-lg lg:text-2xl font-bold text-black mb-4">SẢN PHẨM LIÊN QUAN</h2>
+        <h2 className="text-lg lg:text-2xl font-bold text-black mb-4">KHÓA HỌC LIÊN QUAN</h2>
         <div className="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
-          {[1, 2, 3, 4]?.map((product: any, index: any) => (
+          {DATA.IELTSROADMAP?.slice(0, 4)?.map((product: any, index: any) => (
             <div key={index}>
               <Link href={`${ROUTES.PRODUCT}/${product?._id}`}>
                 <GlobalComponent.ProductCard
-                  image={product?.thumbnail}
-                  title={product?.name}
+                  image={product?.image}
+                  title={product?.title}
                   price={product?.price}
+                  levelStart={product?.levelStart}
+                  levelEnd={product?.levelEnd}
+                  duration={product?.duration}
+                  commitment={product?.target}
                   hot={true}
-                  sold={product?.sold}
-                />
+                  sold={product?.sold} />
               </Link>
             </div>
           ))}
@@ -219,8 +215,7 @@ export default function ProductDetailClient() {
         onClick={() => {
           window.location.href = `http://localhost:3000/tai-khoan?tab=order-single&product=${currentData?._id}`
         }}
-        className='lg:hidden fixed bottom-0 left-0 right-0 h-20 bg-white  shadow-[0px_0px_20px_10px_rgba(0,0,0,0.1)]'
-      >
+        className='lg:hidden fixed bottom-0 left-0 right-0 h-20 bg-white  shadow-[0px_0px_20px_10px_rgba(0,0,0,0.1)]'>
         <div className='h-full flex justify-center items-center'>
           <div className='bg-[rgb(var(--tertiary-rgb))] px-12 py-2 border-2 font-semibold rounded-lg'>
             TẠO ĐƠN HÀNG

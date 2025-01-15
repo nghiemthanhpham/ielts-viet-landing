@@ -11,6 +11,7 @@ import { ROUTES } from '@/utils/route';
 import { useOnClickOutside } from 'usehooks-ts';
 import { ProductService } from '@/services/product';
 import { GlobalComponent } from '@/components/global';
+import { IMAGES } from '@/utils/image';
 
 export default function ProductClient() {
 
@@ -30,19 +31,19 @@ export default function ProductClient() {
     ? products
     : products.filter((item: any) => item.category === selectedCate);
 
-  const filteredDataSort = filteredData.sort((a: any, b: any) => {
-    const priceA = parseInt(a.price.replace(/[^0-9]+/g, ""));
-    const priceB = parseInt(b.price.replace(/[^0-9]+/g, ""));
+  // const filteredDataSort = filteredData.sort((a: any, b: any) => {
+  //   const priceA = parseInt(a.price.replace(/[^0-9]+/g, ""));
+  //   const priceB = parseInt(b.price.replace(/[^0-9]+/g, ""));
 
-    if (selectedSort === 0) {
-      return 0;
-    } else if (selectedSort === 1) {
-      return priceA - priceB;
-    } else if (selectedSort === 2) {
-      return priceB - priceA;
-    }
-    return 0;
-  });
+  //   if (selectedSort === 0) {
+  //     return 0;
+  //   } else if (selectedSort === 1) {
+  //     return priceA - priceB;
+  //   } else if (selectedSort === 2) {
+  //     return priceB - priceA;
+  //   }
+  //   return 0;
+  // });
 
   const handleSelectCategory = (cate: string) => {
     setSelectedCate(cate);
@@ -57,7 +58,8 @@ export default function ProductClient() {
   const init = async () => {
     const res = await ProductService.getAll()
     if (res && res.data.length > 0) {
-      setProducts(res.data)
+      // setProducts(res.data)
+      setProducts(DATA.IELTSROADMAP)
     }
   }
 
@@ -73,18 +75,18 @@ export default function ProductClient() {
           <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
             <Link href={`${ROUTES.HOME}`} className="hover:text-black">Trang chủ</Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href={`${ROUTES.PRODUCT}`} className="hover:text-black">Tất cả sản phẩm</Link>
+            <Link href={`${ROUTES.PRODUCT}`} className="hover:text-black">Tất cả khóa học</Link>
           </nav>
-          <div className="h-32 bg-pink-50 rounded-lg mb-8">
+          <div className="h-52 bg-pink-50 rounded-lg mb-8">
             <Image
-              src="/product.png"
+              src={IMAGES.BANNER}
               alt="Products Banner"
               className="w-full h-full object-cover rounded-lg"
-              width={400}
-              height={0}
+              width={1000}
+              height={1000}
             />
           </div>
-          <h1 className="text-3xl font-bold text-navy-900 mb-6">TẤT CẢ SẢN PHẨM</h1>
+          <h1 className="text-3xl font-bold text-navy-900 mb-6">TẤT CẢ KHÓA HỌC</h1>
           <div className="flex justify-between gap-4 mb-6">
             <div className='relative' ref={filterRef}>
               <Button
@@ -97,8 +99,8 @@ export default function ProductClient() {
                 <div className={`absolute top-12 rounded-md left-0 right-0 w-44 bg-white shadow-[rgba(17,_17,_26,_0.2)_0px_0px_20px] z-10 transition-all duration-700 ease-in-out transform `}>
                   <div className="flex flex-col space-y-2 py-5 px-5">
                     {categories.map((cate: any, index: any) => (
-                      selectedCate === cate.id ? (
-                        <div key={index} className="text-[rgb(var(--primary-rgb))] font-bold py-1 rounded-lg flex items-center">
+                      selectedCate === cate.tag ? (
+                        <div key={index} className="text-[rgb(var(--secondary-rgb))] font-bold py-1 rounded-lg flex items-center">
                           <span>{cate.name}</span>
                         </div>
                       ) : (
@@ -132,7 +134,7 @@ export default function ProductClient() {
                     ]
                       .map(({ labels, sort }) => (
                         selectedSort === sort ? (
-                          <div key={sort} className="text-[rgb(var(--primary-rgb))] font-bold py-1 rounded-lg flex items-center">
+                          <div key={sort} className="text-[rgb(var(--secondary-rgb))] font-bold py-1 rounded-lg flex items-center">
                             <span>{labels}</span>
                           </div>
                         ) : (
@@ -151,17 +153,21 @@ export default function ProductClient() {
             </div>
           </div>
           {
-            filteredDataSort && filteredDataSort.length > 0
+            DATA.IELTSROADMAP && DATA.IELTSROADMAP.length > 0
               ?
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
                 {
-                  filteredDataSort?.map((data: any, index: any) => (
+                  DATA.IELTSROADMAP?.map((data: any, index: any) => (
                     <div key={index}>
-                      <Link href={`${ROUTES.PRODUCT}/${data?._id}`}>
+                      <Link href={`${ROUTES.PRODUCT}/${data?.id}`}>
                         <GlobalComponent.ProductCard
-                          image={data?.thumbnail}
-                          title={data?.name}
+                          image={data?.image}
+                          title={data?.title}
                           price={data?.price}
+                          levelStart={data?.levelStart}
+                          levelEnd={data?.levelEnd}
+                          duration={data?.duration}
+                          commitment={data?.target}
                           hot={true}
                           sold={data?.sold}
                         />

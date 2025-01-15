@@ -2,7 +2,6 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { IMAGES } from '@/utils/image';
 import { DATA } from '@/utils/data';
@@ -13,6 +12,7 @@ import { ProductService } from '@/services/product';
 import { BlogService } from '@/services/blog';
 import { GlobalComponent } from '@/components/global';
 import LearnerSlider from './components/learners.slider';
+import { Check } from 'lucide-react';
 
 export default function HomeContent() {
 
@@ -21,8 +21,13 @@ export default function HomeContent() {
   const [products, setProducts] = useState([] as any)
   const [filteredData, setFilteredData] = useState([] as any)
   const [blogs, setBlogs] = useState([] as any)
-  const [selectedCategory, setSelectedCategory] = useState<string>('plastic');
+  const [selectedCategory, setSelectedCategory] = useState<number>(4.5);
   const [swiperInstance, setSwiperInstance] = useState<any>(null);
+  const [selectedMainCategory, setSelectedMainCategory] = useState<string | null>(null);
+
+  const handleMainCategoryClick = (mainCategory: string) => {
+    setSelectedMainCategory(mainCategory);
+  };
 
   const handleSwiper = (swiper: any) => {
     setSwiperInstance(swiper);
@@ -31,8 +36,10 @@ export default function HomeContent() {
   const renderProduct = async () => {
     const res = await ProductService.getAll()
     if (res && res.data.length > 0) {
-      setProducts(res.data)
-      setFilteredData(res.data.filter((item: any) => item.category === selectedCategory))
+      setProducts(DATA.IELTSROADMAP)
+      // setProducts(res.data)
+      // setFilteredData(res.data.filter((item: any) => item.category === selectedCategory))
+      setFilteredData(DATA.IELTSROADMAP.filter((item: any) => item.levelEnd === selectedCategory))
     }
   }
 
@@ -49,14 +56,18 @@ export default function HomeContent() {
   }
 
   useEffect(() => {
+    renderProduct()
+  }, [selectedCategory]);
+
+  useEffect(() => {
     init()
   }, [])
 
   return (
     <main id="body" className="space-y-6">
-      <div className="w-full flex flex-col lg:flex-row justify-center items-center gap-8">
+      <div className="w-full flex flex-col lg:flex-row justify-center items-center">
         <div className="flex w-full lg:w-1/2 lg:hidden justify-center items-start relative pt-10">
-          <div className="w-5/6 min-h-[250px] flex justify-center items-center border border-[rgb(var(--secondary-rgb))] rounded-lg">
+          <div className="w-10/12 min-h-[250px] flex justify-center items-center border border-[rgb(var(--secondary-rgb))] rounded-lg">
             <Image
               src={IMAGES.HOME_MAIN_THUMBNAIL}
               alt="alt"
@@ -67,15 +78,15 @@ export default function HomeContent() {
           </div>
         </div>
         <div className="w-4/5 lg:w-1/2 flex flex-col justify-center items-start gap-3 lg:gap-8">
-          <h2 className="text-2xl lg:text-4xl font-bold text-gray-800">
+          <h2 className="text-2xl lg:text-4xl font-bold text-gray-800 uppercase">
             Học <span className="text-[rgb(var(--secondary-rgb))]">IELTS</span> cùng các chuyên gia đầu ngành
           </h2>
           <ul className="text-gray-700">
-            <li>✔️ Phương pháp độc quyền, tiết kiệm 40% thời gian</li>
-            <li>✔️ 80% giảng viên là cựu giám khảo IELTS</li>
-            <li>✔️ Hệ thống AI độc quyền 4 kỹ năng</li>
-            <li>✔️ Hỗ trợ toàn diện từ giáo viên bản ngữ</li>
-            <li>✔️ Cam kết đầu ra – 15 năm uy tín</li>
+            <li className='flex flex-row gap-2'><Check color='#FA812F' /> Phương pháp độc quyền, tiết kiệm 40% thời gian</li>
+            <li className='flex flex-row gap-2'><Check color='#FA812F' /> 80% giảng viên là cựu giám khảo IELTS</li>
+            <li className='flex flex-row gap-2'><Check color='#FA812F' /> Hệ thống AI độc quyền 4 kỹ năng</li>
+            <li className='flex flex-row gap-2'><Check color='#FA812F' /> Hỗ trợ toàn diện từ giáo viên bản ngữ</li>
+            <li className='flex flex-row gap-2'><Check color='#FA812F' /> Cam kết đầu ra – 15 năm uy tín</li>
           </ul>
           <div className="flex gap-4">
             <Link href="#">
@@ -129,14 +140,16 @@ export default function HomeContent() {
           </div>
         </div>
         <div className="hidden w-1/2 lg:flex justify-end items-start relative">
-          <div className="w-5/6 flex justify-center items-center border border-[rgb(var(--secondary-rgb))] rounded-lg">
-            <Image
-              src={IMAGES.HOME_MAIN_THUMBNAIL}
-              alt="alt"
-              className="rounded-lg"
-              width={1000}
-              height={1000}
-            />
+          <div className="mx-auto flex items-center justify-center">
+            <div className="h-full w-11/12 rounded-xl bg-gradient-to-r from-[#082124] via-[rgb(var(--secondary-rgb))] to-yellow-500 p-1">
+              <Image
+                src={IMAGES.HOME_MAIN_THUMBNAIL}
+                alt="alt"
+                className="rounded-lg"
+                width={1000}
+                height={1000}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -155,87 +168,34 @@ export default function HomeContent() {
 
       <div className="text-center px-4 lg:py-4">
         <h3 className="text-lg lg:text-2xl font-bold text-navy-blue mb-4 lg:mb-8">DANH MỤC KHÓA HỌC</h3>
-        <div className="flex justify-center space-x-4">
-          <Link href={`${ROUTES.PRODUCT}`}>
-            <GlobalComponent.CategoryCard
-              title="Khóa IELTS 4 kỹ năng"
-              icon={
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-graduation-cap"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" /><path d="M22 10v6" /><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" /></svg>
-                // <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-hard-drive"><line x1="22" x2="2" y1="12" y2="12" /><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" /><line x1="6" x2="6.01" y1="16" y2="16" /><line x1="10" x2="10.01" y1="16" y2="16" /></svg>
-              }
-            />
-          </Link>
-          <Link href={`${ROUTES.PRODUCT}`}>
-            <GlobalComponent.CategoryCard
-              title="Khóa IELTS 2 kỹ năng"
-              icon={
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-book-copy"><path d="M2 16V4a2 2 0 0 1 2-2h11" /><path d="M22 18H11a2 2 0 1 0 0 4h10.5a.5.5 0 0 0 .5-.5v-15a.5.5 0 0 0-.5-.5H11a2 2 0 0 0-2 2v12" /><path d="M5 14H4a2 2 0 1 0 0 4h1" /></svg>
-                // <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-frame"><line x1="22" x2="2" y1="6" y2="6" /><line x1="22" x2="2" y1="18" y2="18" /><line x1="6" x2="6" y1="2" y2="22" /><line x1="18" x2="18" y1="2" y2="22" /></svg>
-              }
-            />
-          </Link>
+        <div className="flex flex-col gap-3 lg:flex-row justify-center items-center">
+          {DATA.MAINCATEGORIES
+            ?.find((mCategory: any) => (
+              selectedMainCategory === mCategory.title
+            ))
+            ?.slice(0, 2)
+            ?.map((category, index) => (
+              <div key={index} className="flex flex-row justify-center items-center gap-3">
+                <GlobalComponent.CategoryCard
+                  title={category}
+                  isSelected={selectedMainCategory === category.title}
+                  onClick={() => handleMainCategoryClick(category.title)}
+                />
+              </div>
+            ))}
         </div>
       </div>
       <div className="p-4 md:p-0 lg:p-0 space-y-8">
         <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-4'>
-          <div className="grid grid-rows-2 lg:grid-cols-12 gap-6 rounded-lg overflow-hidden border border-dashed border-[rgb(var(--secondary-rgb))] p-4">
-            <Image
-              src={IMAGES.INTRODUCE_COURSE_1}
-              alt="alt"
-              className="row-span-6 lg:col-span-5 w-full h-full object-cover rounded-lg"
-              width={200}
-              height={200}
-              priority
-            />
-            <div className="row-span-6 lg:col-span-7 text-left mt-4">
-              <h3 className="text-xl lg:text-2xl font-extrabold text-gray-800">Khóa học 1</h3>
-              <div className="flex justify-start items-center gap-2 my-4">
-                <p className="text-[rgb(var(--secondary-rgb))] font-semibold text-lg">2.000.000 đ</p>
-                <p className="text-gray-500 text-sm">36 giờ (8 tuần)</p>
-              </div>
-              <ul className="mt-2 text-gray-700 text-sm lg:text-base space-y-1">
-                {DATA.IELTSROADMAP[0].target.map((tg, index) => (
-                  <li key={index}>✔️ {tg}</li>
-                ))}
-              </ul>
-              <div className="flex justify-center">
-                <Button
-                  className="w-full md:w/1-3 lg:w-2/5 bg-[rgb(var(--secondary-rgb))] hover:bg-[#6B3410] text-white mt-4"
-                >
-                  Đăng ký ngay
-                </Button>
-              </div>
+          {DATA.IELTSROADMAP?.slice(0, 2)?.map((mCourse: any, index: number) => (
+            <div key={index}>
+              <GlobalComponent.MainProductCard
+                image={mCourse?.image[0]}
+                title={mCourse?.title}
+                price={mCourse?.price}
+                commitment={mCourse?.target} />
             </div>
-          </div>
-          <div className="hidden lg:grid grid-rows-2 lg:grid-cols-12 gap-6 rounded-lg overflow-hidden border border-dashed border-[rgb(var(--secondary-rgb))] p-4">
-            <Image
-              src={IMAGES.INTRODUCE_COURSE_2}
-              alt="alt"
-              className="row-span-6 lg:col-span-5 w-full h-full object-cover rounded-lg"
-              width={200}
-              height={200}
-              priority
-            />
-            <div className="row-span-6 lg:col-span-7 text-left mt-4">
-              <h3 className="text-xl lg:text-2xl font-extrabold text-gray-800">Khóa học 2</h3>
-              <div className="flex justify-start items-center gap-2 my-4">
-                <p className="text-[rgb(var(--secondary-rgb))] font-semibold text-lg">2.000.000 đ</p>
-                <p className="text-gray-500 text-sm">36 giờ (8 tuần)</p>
-              </div>
-              <ul className="mt-2 text-gray-700 text-sm lg:text-base space-y-1">
-                {DATA.IELTSROADMAP[0].target.map((tg, index) => (
-                  <li key={index}>✔️ {tg}</li>
-                ))}
-              </ul>
-              <div className="flex justify-center">
-                <Button
-                  className="w-full md:w/1-3 lg:w-2/5 bg-[rgb(var(--secondary-rgb))] hover:bg-[#6B3410] text-white mt-4"
-                >
-                  Đăng ký ngay
-                </Button>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
         <div className='lg:py-6'>
           <h2 className="text-lg lg:text-2xl font-bold text-black mb-4 lg:mb-8">KHÓA HỌC NỔI BẬT</h2>
@@ -244,9 +204,13 @@ export default function HomeContent() {
               <div key={index}>
                 <Link href={`${ROUTES.PRODUCT}/${product?._id}`}>
                   <GlobalComponent.ProductCard
-                    image={product?.thumbnail}
-                    title={product?.name}
+                    image={product?.image[1]}
+                    title={product?.title}
                     price={product?.price}
+                    levelStart={product?.levelStart}
+                    levelEnd={product?.levelEnd}
+                    duration={product?.duration}
+                    commitment={product?.target}
                     hot={true}
                     sold={product?.sold}
                   />
@@ -262,13 +226,10 @@ export default function HomeContent() {
         </div>
         <div className="flex flex-col bg-[rgb(var(--quaternary-rgb))] rounded-lg p-4 space-y-3">
           {[
-            { label: "ẢNH PLASTIC", cate: 'plastic' },
-            { label: "KHUNG ẢNH", cate: 'frame' },
-            { label: "ALBUM", cate: 'album' },
-            { label: "MỤC TIÊU 4.5+", cate: 'album1' },
-            { label: "MỤC TIÊU 5.5+", cate: 'album2' },
-            { label: "MỤC TIÊU 6.0+", cate: 'album3' },
-            { label: "MỤC TIÊU 6.5+", cate: 'album4' },
+            { label: "MỤC TIÊU 4.5+", cate: 4.5 },
+            { label: "MỤC TIÊU 5.5+", cate: 5.5 },
+            { label: "MỤC TIÊU 6.0+", cate: 6.0 },
+            { label: "MỤC TIÊU 6.5+", cate: 6.5 },
           ].map(({ label, cate }) => (
             selectedCategory === cate ? (
               <div key={cate} className="bg-[rgb(var(--secondary-rgb))] text-white py-3 px-4 rounded-lg flex items-center">
@@ -291,9 +252,13 @@ export default function HomeContent() {
             <div key={index}>
               <Link href={`${ROUTES.PRODUCT}/${product?._id}`}>
                 <GlobalComponent.ProductCard
-                  image={product?.thumbnail}
-                  title={product?.name}
+                  image={product?.image[1]}
+                  title={product?.title}
                   price={product?.price}
+                  levelStart={product?.levelStart}
+                  levelEnd={product?.levelEnd}
+                  duration={product?.duration}
+                  commitment={product?.target}
                   hot={true}
                   sold={product?.sold}
                 />
@@ -303,8 +268,8 @@ export default function HomeContent() {
         </div>
       </div>
       <div className="p-4 md:p-0 lg:p-0 space-y-10 pt-0">
-        <div className="space-y-4 lg:py-10">
-          <h2 className="text-2xl font-bold text-navy-900 text-center">
+        <div className="space-y-4 lg:py-4">
+          <h2 className="text-2xl font-bold text-navy-900 text-center mb-4 lg:mb-8">
             ĐẶC QUYỀN CỦA HỌC VIÊN IELTS VIỆT
           </h2>
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 mx-auto">
@@ -371,7 +336,7 @@ export default function HomeContent() {
           </div>
         </div>
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-center text-navy-900">
+          <h2 className="text-2xl font-bold text-center text-navy-900 mb-4">
             HỌC VIÊN NÓI GÌ VỀ IELTS VIỆT?
           </h2>
           <LearnerSlider />
