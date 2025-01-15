@@ -61,7 +61,7 @@ const courses: Course[] = [
     },
 ];
 
-const Section01 = () => {
+const Section04 = () => {
     return (
         <section className="w-full">
             <div className="space-y-12">
@@ -73,13 +73,13 @@ const Section01 = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-4">
                     {courses?.map((course: Course) => (
-                        <Card key={course?.id} className="overflow-hidden cursor-pointer hover:opacity-80">
+                        <Card key={course?.id} className="relative overflow-hidden cursor-pointer group hover:opacity-80">
                             <CardContent className="p-0">
-                                <div className="relative">
+                                <div className="relative shadow-inner overflow-hidden group">
                                     <Image
                                         src={course?.image}
                                         alt={course?.title}
-                                        className="w-full h-56 object-cover"
+                                        className="w-full h-56 transform transition-transform duration-500 group-hover:scale-105  object-cover"
                                         width={400}
                                         height={200}
                                     />
@@ -155,4 +155,5 @@ const Section01 = () => {
     );
 };
 
-export default Section01;
+export default Section04
+    ;

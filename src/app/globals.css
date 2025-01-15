@@ -63,6 +63,34 @@
   }
 }
 
+.hover-container {
+  position: relative;
+}
+
+.circle {
+  position: relative;
+  border-radius: 50%;
+}
+
+.hover-container:hover .circle:before {
+  position: absolute;
+  content: '';
+  height: calc(100% + 10px); 
+  width: calc(100% + 10px); 
+  border: 2px dashed orange;
+  top: -5.5px;
+  left: -5.5px;
+  border-radius: inherit;
+  animation: spin 10s linear infinite;
+  transition: 3s;
+}
+
+@keyframes spin { 
+  100% { 
+    transform: rotateZ(360deg); 
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
