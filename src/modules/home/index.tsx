@@ -8,7 +8,7 @@ export default function HomeClient() {
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <Header />
-      <div className="w-full mt-8 mb-20">
+      <div className="w-full mt-12 mb-20">
         <HomeContent />
       </div>
       <Footer />

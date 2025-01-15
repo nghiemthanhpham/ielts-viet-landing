@@ -7,12 +7,12 @@ import { PlayCircle } from "lucide-react";
 const SectionBanner = () => {
     return (
         <section className="w-full flex items-center px-6 lg:px-0">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                 <div className="space-y-6">
                     <div className="space-y-2">
                         <p className="text-[rgb(var(--secondary-rgb))] text-[17px] lg:text-[20px] font-semibold">Trung Tâm Đào Tạo Anh Ngữ</p>
-                        <h1 className="leading-none text-3xl lg:text-[55px] font-bold text-gray-900">
-                            Lets Learn About New Knowledge And Abilities
+                        <h1 className="leading-tight text-3xl lg:text-[50px] font-bold text-gray-900">
+                            Đăng Ký Sớm Để Nhận Ngay Ưu Đãi
                         </h1>
                     </div>
                     <p className="text-gray-600 text-lg">

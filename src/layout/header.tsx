@@ -20,7 +20,7 @@ const Header = () => {
     return (
         <header className="w-full flex justify-center items-center border-b">
             <div className="w-full lg:w-3/4 px-6 lg:px-0">
-                <div className="flex items-center justify-between h-20">
+                <div className="flex items-center justify-between h-24">
                     <div className='flex lg:hidden'>
                         <AlignJustify />
                     </div>
@@ -28,9 +28,9 @@ const Header = () => {
                         <Image
                             src={IMAGES.LOGO}
                             alt="alt"
-                            className="w-full h-14 object-cover"
+                            className="w-full h-12 object-cover"
                             width={1000}
-                            height={1000}
+                            height={0}
                         />
                     </Link>
                     <nav className="hidden lg:flex items-center gap-8">

@@ -69,7 +69,7 @@ const Footer = () => {
                 <div className="w-full lg:w-3/4 py-6">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="text-gray-400">© 2025 IELTS VIET. All rights reserved.</p>
-                        <div className="flex gap-6 text-center">
+                        <div className="hidden lg:flex gap-6 text-center">
                             <Link href="#" className="text-gray-400 hover:text-white transition-colors">Chính sách bảo mật</Link>
                             <Link href="#" className="text-gray-400 hover:text-white transition-colors">Điều khoản sử dụng</Link>
                             <Link href="#" className="text-gray-400 hover:text-white transition-colors">FAQs</Link>
