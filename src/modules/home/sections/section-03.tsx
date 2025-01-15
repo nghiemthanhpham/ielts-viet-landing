@@ -1,6 +1,6 @@
 'use client'
 
-import { FolderCode } from "lucide-react";
+import { Component, FolderCode, Target, TvMinimal } from "lucide-react";
 
 interface CourseCategory {
     id: string;
@@ -17,7 +17,7 @@ const categories: CourseCategory[] = [
         description: 'We are providing you the best UI/UX design guideline. That help you be professional.',
         icon: (
             <div className="bg-yellow-400 p-4 rounded-full">
-                <div className="text-white font-bold">UX</div>
+                <div className="text-white font-bold"><Component /></div>
             </div>
         ),
         backgroundColor: 'bg-white'
@@ -28,7 +28,7 @@ const categories: CourseCategory[] = [
         description: 'We are providing you the best Digital Marketing guideline. That help you be professional.',
         icon: (
             <div className="bg-emerald-500 p-4 rounded-full">
-                <div className="text-white">📣</div>
+                <div className="text-white"><TvMinimal /></div>
             </div>
         ),
         backgroundColor: 'bg-white'
@@ -50,7 +50,7 @@ const categories: CourseCategory[] = [
         description: 'We are providing you the best Self Improvement guideline. That help you be professional.',
         icon: (
             <div className="bg-pink-500 p-4 rounded-full">
-                <div className="text-white">🎯</div>
+                <div className="text-white"><Target /></div>
             </div>
         ),
         backgroundColor: 'bg-white'
@@ -59,17 +59,17 @@ const categories: CourseCategory[] = [
 
 const Section03 = () => {
     return (
-        <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="max-w-7xl mx-auto pb-20 pt-12">
             <div className="text-center mb-12">
                 <div className="text-center space-y-1">
-                    <p className="text-[rgb(var(--secondary-rgb))] text-[17px] lg:text-[20px] font-semibold mb-3">Our Courses</p>
-                    <h2 className="text-3xl mx-2 lg:text-[55px] font-bold">
+                    <p className="text-[#eee] text-[17px] lg:text-[20px] font-semibold mb-3">Our Courses</p>
+                    <h2 className="text-3xl mx-2 lg:text-[55px] font-bold text-[rgb(var(--quaternary-rgb))]">
                         Explore Courses By Category
                     </h2>
                 </div>
             </div>
             <div className="relative">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-6 lg:mx-2">
                     {categories.map((category) => (
                         <div
                             key={category.id}

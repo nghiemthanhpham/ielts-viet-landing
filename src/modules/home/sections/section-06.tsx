@@ -1,6 +1,6 @@
 'use client'
 
-import { FolderCode } from "lucide-react";
+import { Component, FolderCode, Target, TvMinimal } from "lucide-react";
 
 
 interface CourseCategory {
@@ -18,7 +18,7 @@ const categories: CourseCategory[] = [
         description: 'We are providing you the best UI/UX design guideline. That help you be professional.',
         icon: (
             <div className="bg-yellow-400 p-4 rounded-full">
-                <div className="text-white font-bold">UX</div>
+                <div className="text-white font-bold"><Component /></div>
             </div>
         ),
         backgroundColor: 'bg-white'
@@ -29,7 +29,7 @@ const categories: CourseCategory[] = [
         description: 'We are providing you the best Digital Marketing guideline. That help you be professional.',
         icon: (
             <div className="bg-emerald-500 p-4 rounded-full">
-                <div className="text-white">📣</div>
+                <div className="text-white"><TvMinimal /></div>
             </div>
         ),
         backgroundColor: 'bg-white'
@@ -51,7 +51,7 @@ const categories: CourseCategory[] = [
         description: 'We are providing you the best Self Improvement guideline. That help you be professional.',
         icon: (
             <div className="bg-pink-500 p-4 rounded-full">
-                <div className="text-white">🎯</div>
+                <div className="text-white"><Target /></div>
             </div>
         ),
         backgroundColor: 'bg-white'
@@ -60,7 +60,7 @@ const categories: CourseCategory[] = [
 
 const Section06 = () => {
     return (
-        <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="max-w-7xl mx-auto px-1">
             <div className="text-center mb-12">
                 <div className="text-center space-y-1">
                     <p className="text-[rgb(var(--secondary-rgb))] text-[17px] lg:text-[20px] font-semibold mb-3">Our Courses</p>
@@ -70,12 +70,11 @@ const Section06 = () => {
                 </div>
             </div>
             <div className="relative">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-3 lg:mx-0">
                     {categories.map((category) => (
                         <div
                             key={category.id}
-                            className={`${category.backgroundColor} rounded-lg p-8 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-md transition-shadow duration-300`}
-                        >
+                            className={`${category.backgroundColor} rounded-lg p-8 border border-gray-200 hover:shadow-md transition-shadow duration-300 cursor-pointer mx-2 lg:mx-0`}>
                             <div className="flex flex-col items-start gap-4">
                                 {category.icon}
                                 <h3 className="text-xl font-bold">{category.title}</h3>

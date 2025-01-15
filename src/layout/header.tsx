@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import Image from 'next/image';
 import { AlignJustify, PhoneCall } from 'lucide-react';
+import { IMAGES } from '@/utils/images';
 
 const Header = () => {
 
@@ -25,13 +26,12 @@ const Header = () => {
                     </div>
                     <Link href="/" className="hidden lg:flex items-center gap-2">
                         <Image
-                            src="/logo.png"
+                            src={IMAGES.LOGO}
                             alt="alt"
-                            className="w-12 h-12 object-cover"
-                            width={100}
-                            height={0}
+                            className="w-full h-14 object-cover"
+                            width={1000}
+                            height={1000}
                         />
-                        <span className="text-[22px] font-semibold text-gray-700">IELTS VIET</span>
                     </Link>
                     <nav className="hidden lg:flex items-center gap-8">
                         {navigationItems.map((item) => (

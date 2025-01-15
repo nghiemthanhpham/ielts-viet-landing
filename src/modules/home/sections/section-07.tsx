@@ -40,17 +40,17 @@ const blogPosts: BlogPost[] = [
 
 const Section07 = () => {
     return (
-        <section className="max-w-7xl mx-auto px-4 py-16 cursor-pointer">
+        <section className="max-w-7xl mx-auto px-3 pb-20 pt-12">
             <div className="text-center mb-12">
                 <div className="text-center space-y-1">
-                    <p className="text-[rgb(var(--secondary-rgb))] text-[17px] lg:text-[20px] font-semibold mb-3">Our Blogs</p>
-                    <h2 className="text-3xl mx-2 lg:text-[55px] font-bold">
+                    <p className="text-[#eee] text-[17px] lg:text-[20px] font-semibold mb-3">Our Blogs</p>
+                    <h2 className="text-3xl mx-2 lg:text-[55px] font-bold text-[rgb(var(--quaternary-rgb))]">
                         Our Latest News
                     </h2>
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-3 lg:mx-0">
                 {blogPosts.map((post) => (
                     <article
                         key={post.id}
@@ -59,7 +59,7 @@ const Section07 = () => {
                             <Image
                                 src={post.imageUrl}
                                 alt={post.title}
-                                className="w-full h-full transform transition-transform duration-500 group-hover:scale-105  object-cover"
+                                className="w-full h-full transform transition-transform duration-500 group-hover:scale-105 object-cover"
                                 width={1000}
                                 height={1000} />
                         </div>
@@ -73,7 +73,7 @@ const Section07 = () => {
                                 {post.title}
                             </h3>
                             <div
-                                className="inline-block text-yellow-400 font-medium hover:text-yellow-500 transition-colors duration-300 underline-offset-2">
+                                className="inline-block text-[rgb(var(--secondary-rgb))] font-medium hover:opacity-60 transition-colors duration-300 underline-offset-2 cursor-pointer">
                                 Continue Reading
                             </div>
                         </div>

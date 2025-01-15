@@ -50,7 +50,7 @@ const StarRating = ({ rating }: { rating: number }) => {
             {[1, 2, 3, 4, 5].map((star) => (
                 <Star
                     key={star}
-                    className={`w-5 h-5 ${star <= rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'
+                    className={`w-5 h-5 ${star <= rating ? 'fill-[rgb(var(--secondary-rgb))] text-[rgb(var(--secondary-rgb))]' : 'text-gray-300'
                         }`}
                 />
             ))}
@@ -61,20 +61,20 @@ const StarRating = ({ rating }: { rating: number }) => {
 
 const Section05 = () => {
     return (
-        <section className="max-w-7xl mx-auto px-4 py-16">
+        <section className="max-w-7xl mx-auto pb-20 pt-12">
             <div className="text-center mb-12">
                 <div className="text-center space-y-1">
-                    <p className="text-[rgb(var(--secondary-rgb))] text-[17px] lg:text-[20px] font-semibold mb-3">Testimonials</p>
-                    <h2 className="text-3xl mx-2 lg:text-[55px] font-bold">
+                    <p className="text-[#eee] text-[17px] lg:text-[20px] font-semibold mb-3">Testimonials</p>
+                    <h2 className="text-3xl mx-2 lg:text-[55px] font-bold text-[rgb(var(--quaternary-rgb))]">
                         What Our Students Says About Us
                     </h2>
                 </div>
             </div>
             <div className="relative">
-                <div className="flex flex-col lg:flex-row gap-6 overflow-hidden">
+                <div className="flex flex-col lg:flex-row justify-center items-center gap-6 overflow-hidden mx-4 lg:mx-0">
                     {testimonials.map((testimonial, index) => (
                         <div key={testimonial.id}
-                            className={`w-full md:w-1/2 lg:w-[32%] lg:flex-shrink-0 transform transition-transform duration-300 ease-in-out`} >
+                            className={`w-[96%] md:w-1/2 lg:w-[31.5%] lg:flex-shrink-0 transform transition-transform duration-300 ease-in-out`} >
                             <div className="bg-white p-8 rounded-lg shadow-sm">
                                 <div className="flex items-center gap-4 mb-4">
                                     <Image
@@ -90,7 +90,7 @@ const Section05 = () => {
                                 </div>
                                 <StarRating rating={testimonial.rating} />
                                 <p className="mt-4 text-gray-600">{testimonial.comment}</p>
-                                <div className="absolute top-4 right-4 text-yellow-400 text-4xl font-serif opacity-25"><Quote size={40} /></div>
+                                <div className="absolute top-4 right-4 text-[rgb(var(--secondary-rgb))] text-4xl font-serif opacity-25"><Quote size={40} /></div>
                             </div>
                         </div>
                     ))}

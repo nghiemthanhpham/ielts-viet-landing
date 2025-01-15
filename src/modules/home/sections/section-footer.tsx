@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 
 const SectionFooter = () => {
     return (
-        <section className="w-full bg-[rgb(var(--secondary-rgb))] py-12 lg:py-20 relative overflow-hidden lg:rounded-xl">
+        <section className="w-[88%] lg:w-[100%] mx-auto bg-[rgb(var(--secondary-rgb))] py-12 lg:py-20 relative overflow-hidden rounded-xl">
             <div
                 className="absolute inset-0 opacity-10"
                 style={{
@@ -25,12 +25,10 @@ const SectionFooter = () => {
                         <Input
                             type="email"
                             placeholder="Enter your email"
-                            className="flex-1 h-12 bg-[rgb(var(--secondary-rgb))] border-white/50 text-white placeholder:text-white"
-                        />
+                            className="flex-1 h-12 bg-[rgb(var(--secondary-rgb))] border-white/50 text-white placeholder:text-white" />
                         <Button
                             type="submit"
-                            className="h-12 px-8 bg-white text-[rgb(var(--secondary-rgb))] hover:bg-amber-50 font-semibold"
-                        >
+                            className="h-12 px-8 bg-white text-[rgb(var(--secondary-rgb))] hover:bg-amber-50 font-semibold">
                             Subscribe
                         </Button>
                     </form>
