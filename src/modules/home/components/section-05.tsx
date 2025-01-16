@@ -15,28 +15,28 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
     {
         id: '1',
-        name: 'Leslie Alexander',
-        role: 'Students of UX/UI',
+        name: 'Nguyễn Thuỳ Trang',
+        role: 'THPT An Khánh',
         rating: 5.0,
-        comment: "I can't express enough gratitude for the awesome experience I had during my education journey. As a beginner they support me as much possible.",
-        imageUrl: 'https://wpocean.com/html/tf/eduko/assets/images/testimonial/thumb1.png'
+        comment: "Mình đã tham gia khoá học 1:1 cấp tốc tại IELTS CITY trong khoảng thời gian 7 tuần. Giáo trình học được đội ngũ giáo viên soạn riêng dựa theo năng lực.",
+        imageUrl: 'https://res.cloudinary.com/farmcode/image/upload/v1737017655/ielts-viet/tkrtg2nekaldxkosyx5l.png'
     },
     {
         id: '2',
-        name: 'Eleanor Pena',
-        role: 'Students of Graphic Designer',
-        rating: 4.0,
-        comment: "I can't express enough gratitude for the awesome experience I had during my education journey. As a beginner they support me as much possible.",
-        imageUrl: 'https://wpocean.com/html/tf/eduko/assets/images/testimonial/thumb2.png'
+        name: 'Nguyễn Thuỳ Trang',
+        role: 'THPT An Khánh',
+        rating: 5.0,
+        comment: "Mình đã tham gia khoá học 1:1 cấp tốc tại IELTS CITY trong khoảng thời gian 7 tuần. Giáo trình học được đội ngũ giáo viên soạn riêng dựa theo năng lực.",
+        imageUrl: 'https://res.cloudinary.com/farmcode/image/upload/v1737017655/ielts-viet/tkrtg2nekaldxkosyx5l.png'
     },
     {
         id: '3',
-        name: 'Annette Black',
-        role: 'Students of PHP',
+        name: 'Nguyễn Thuỳ Trang',
+        role: 'THPT An Khánh',
         rating: 5.0,
-        comment: "I can't express enough gratitude for the awesome experience I had during my education journey. As a beginner they support me as much possible.",
-        imageUrl: 'https://wpocean.com/html/tf/eduko/assets/images/testimonial/thumb3.png'
-    }
+        comment: "Mình đã tham gia khoá học 1:1 cấp tốc tại IELTS CITY trong khoảng thời gian 7 tuần. Giáo trình học được đội ngũ giáo viên soạn riêng dựa theo năng lực.",
+        imageUrl: 'https://res.cloudinary.com/farmcode/image/upload/v1737017655/ielts-viet/tkrtg2nekaldxkosyx5l.png'
+    },
 ];
 
 const StarRating = ({ rating }: { rating: number }) => {
@@ -56,17 +56,17 @@ const StarRating = ({ rating }: { rating: number }) => {
 
 const Section05 = () => {
     return (
-        <section className="max-w-7xl mx-auto pb-20 pt-12">
+        <section className="w-full lg:w-3/4 px-6 lg:px-0 pb-20 pt-12">
             <div className="text-center mb-12">
                 <div className="text-center space-y-1">
-                    <p className="text-[#eee] text-md lg:text-lg font-semibold mb-3">Testimonials</p>
+                    <p className="text-[#eee] text-md lg:text-lg font-semibold mb-3">Thành Tựu Nổi Bật</p>
                     <h2 className="text-4xl mx-2 lg:text-5xl font-bold text-[rgb(var(--quaternary-rgb))]">
-                        What Our Students Says About Us
+                        Học Viên Nói Gì Về IETLS VIET
                     </h2>
                 </div>
             </div>
             <div className="relative">
-                <div className="flex flex-col lg:flex-row justify-center items-center gap-6 overflow-hidden mx-4 lg:mx-0">
+                <div className="w-full flex flex-col lg:flex-row justify-between items-center overflow-hidden gap-8">
                     {testimonials.map((testimonial, index) => (
                         <div key={testimonial.id}
                             className={`w-[96%] md:w-1/2 lg:w-[31.5%] lg:flex-shrink-0 transform transition-transform duration-300 ease-in-out`} >
@@ -85,7 +85,8 @@ const Section05 = () => {
                                 </div>
                                 <StarRating rating={testimonial.rating} />
                                 <p className="mt-4 text-gray-600">{testimonial.comment}</p>
-                                <div className="absolute top-4 right-4 text-[rgb(var(--secondary-rgb))] text-4xl font-serif opacity-25"><Quote size={40} /></div>
+                                <div className="hidden lg:flex absolute top-4 right-4 text-[rgb(var(--secondary-rgb))] text-4xl font-serif opacity-25"><Quote size={40} /></div>
+                                <div className="flex lg:hidden absolute top-4 right-4 text-[rgb(var(--secondary-rgb))] text-4xl font-serif opacity-25"><Quote size={20} /></div>
                             </div>
                         </div>
                     ))}

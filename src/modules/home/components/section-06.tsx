@@ -13,7 +13,7 @@ interface CourseCategory {
 const categories: CourseCategory[] = [
     {
         id: 'uiux',
-        title: 'UI/UX Design',
+        title: 'Phòng Riêng Biệt',
         description: 'We are providing you the best UI/UX design guideline. That help you be professional.',
         icon: (
             <div className="bg-yellow-400 p-4 rounded-full">
@@ -24,7 +24,7 @@ const categories: CourseCategory[] = [
     },
     {
         id: 'marketing',
-        title: 'Digital Marketing',
+        title: 'Màn Hình, Máy Chiếu',
         description: 'We are providing you the best Digital Marketing guideline. That help you be professional.',
         icon: (
             <div className="bg-emerald-500 p-4 rounded-full">
@@ -35,7 +35,7 @@ const categories: CourseCategory[] = [
     },
     {
         id: 'development',
-        title: 'Development',
+        title: 'Tài Liệu Nước Ngoài',
         description: 'We are providing you the best Development guideline. That help you be professional.',
         icon: (
             <div className="bg-blue-600 p-4 rounded-full">
@@ -46,7 +46,7 @@ const categories: CourseCategory[] = [
     },
     {
         id: 'improvement',
-        title: 'Self Improvement',
+        title: 'Online Linh Hoạt',
         description: 'We are providing you the best Self Improvement guideline. That help you be professional.',
         icon: (
             <div className="bg-pink-500 p-4 rounded-full">
@@ -59,20 +59,20 @@ const categories: CourseCategory[] = [
 
 const Section06 = () => {
     return (
-        <div className="max-w-7xl mx-auto px-1">
+        <div className="w-full px-4 lg:px-0">
             <div className="text-center mb-12">
                     <p className="text-[rgb(var(--secondary-rgb))] text-md lg:text-lg font-semibold mb-3">
-                        Our Professionals
+                        Không Gian Học Tập
                     </p>
                     <div className="relative inline-block">
                         <h2 className="text-4xl lg:text-5xl font-bold">
-                            Meet our Teachers
+                            Cơ Sở Vật Chất Hiện Đại
                         </h2>
-                        <div className="absolute top-1/2 right-0 w-32 h-3 bg-[rgb(var(--tertiary-rgb))] opacity-70 -z-10 transform translate-x-6"></div>
+                        <div className="hidden lg:flex absolute top-1/2 right-0 w-32 h-3 bg-[rgb(var(--tertiary-rgb))] opacity-70 -z-10 transform translate-x-6"></div>
                     </div>
                 </div>
             <div className="relative">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-3 lg:mx-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                     {categories.map((category) => (
                         <div
                             key={category.id}

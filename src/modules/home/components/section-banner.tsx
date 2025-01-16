@@ -20,11 +20,12 @@ const SectionBanner = () => {
                     </p>
                     <div className="flex items-center gap-4">
                         <Button className="text-[16px] rounded-full px-10 bg-[rgb(var(--secondary-rgb))] hover:bg-[rgb(var(--secondary-rgb))] hover:opacity-80 text-white">
-                            Get Started
+                            Khám phá ngay
                         </Button>
                         <Button variant="ghost" className="text-[16px] rounded-full text-[rgb(var(--secondary-rgb))] flex items-center gap-2">
                             <PlayCircle className="w-5 h-5" />
-                            Watch Our Video
+                            <span className='hidden lg:flex'>Video giới thiệu</span>
+                            <span className='flex lg:hidden'>Video</span>
                         </Button>
                     </div>
                 </div>
@@ -36,18 +37,17 @@ const SectionBanner = () => {
                                 <h3 className="text-2xl">Online Admission</h3>
                             </div>
                             <blockquote className="text-white">
-                                If you are not willing to risk the usual, you will have to settle for the ordinary
+                                Sẵn sàng để trở thành học viên của chúng tôi
                             </blockquote>
                             <Button variant="outline" className="text-[rgb(var(--secondary-rgb))] rounded-full px-8 font-semibold border-white hover:bg-white/10 hover:text-white">
-                                Visit Us
+                                Đăng ký
                             </Button>
                             <div className="mt-4">
                                 <p className="text-white">www.ieltsviet.edu.vn</p>
-                                <p className="text-white">For more info call</p>
                             </div>
                         </div>
-                        <div className="absolute top-4 right-4">
-                            <p className="text-lg font-semibold">Crack your IELTS EXAM</p>
+                        <div className="hidden lg:flex absolute top-4 right-4">
+                            <p className="text-lg font-semibold">Power by IELTS VIET</p>
                         </div>
                         <div className="absolute -right-20 bottom-0">
                             <div className="w-80 h-80 bg-white/10 rounded-full"></div>

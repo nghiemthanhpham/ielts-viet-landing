@@ -59,19 +59,97 @@ const courses: Course[] = [
         lessonsCount: 12,
         image: "https://wpocean.com/html/tf/eduko/assets/images/popular/img-3.jpg",
     },
+    {
+        id: 1,
+        title: "Learn WordPress & Elementor for Beginners",
+        price: 8900000,
+        instructor: {
+            name: "Robert Henry",
+            avatar: "https://wpocean.com/html/tf/eduko/assets/images/popular/avater/img-3.jpg",
+            rating: 4.5,
+        },
+        studentsCount: 245,
+        lessonsCount: 25,
+        image: "https://wpocean.com/html/tf/eduko/assets/images/popular/img-3.jpg",
+    },
+    {
+        id: 2,
+        title: "The Complete Guide to Be a Graphics Designer.",
+        price: 8900000,
+        instructor: {
+            name: "Jenny Wilson",
+            avatar: "https://wpocean.com/html/tf/eduko/assets/images/popular/avater/img-3.jpg",
+            rating: 5.0,
+        },
+        studentsCount: 365,
+        lessonsCount: 35,
+        image: "https://wpocean.com/html/tf/eduko/assets/images/popular/img-3.jpg",
+    },
+    {
+        id: 3,
+        title: "Learning How To Write As A Professional Author",
+        price: 8900000,
+        instructor: {
+            name: "Jerome Bell",
+            avatar: "https://wpocean.com/html/tf/eduko/assets/images/popular/avater/img-3.jpg",
+            rating: 4.9,
+        },
+        studentsCount: 134,
+        lessonsCount: 12,
+        image: "https://wpocean.com/html/tf/eduko/assets/images/popular/img-3.jpg",
+    },
+    {
+        id: 1,
+        title: "Learn WordPress & Elementor for Beginners",
+        price: 8900000,
+        instructor: {
+            name: "Robert Henry",
+            avatar: "https://wpocean.com/html/tf/eduko/assets/images/popular/avater/img-3.jpg",
+            rating: 4.5,
+        },
+        studentsCount: 245,
+        lessonsCount: 25,
+        image: "https://wpocean.com/html/tf/eduko/assets/images/popular/img-3.jpg",
+    },
+    {
+        id: 2,
+        title: "The Complete Guide to Be a Graphics Designer.",
+        price: 8900000,
+        instructor: {
+            name: "Jenny Wilson",
+            avatar: "https://wpocean.com/html/tf/eduko/assets/images/popular/avater/img-3.jpg",
+            rating: 5.0,
+        },
+        studentsCount: 365,
+        lessonsCount: 35,
+        image: "https://wpocean.com/html/tf/eduko/assets/images/popular/img-3.jpg",
+    },
+    {
+        id: 3,
+        title: "Learning How To Write As A Professional Author",
+        price: 8900000,
+        instructor: {
+            name: "Jerome Bell",
+            avatar: "https://wpocean.com/html/tf/eduko/assets/images/popular/avater/img-3.jpg",
+            rating: 4.9,
+        },
+        studentsCount: 134,
+        lessonsCount: 12,
+        image: "https://wpocean.com/html/tf/eduko/assets/images/popular/img-3.jpg",
+    },
 ];
 
-const Section04 = () => {
+const Section01 = () => {
     return (
         <section className="w-full">
             <div className="space-y-12">
                 <div className="text-center">
                     <p className="text-[rgb(var(--secondary-rgb))] text-md lg:text-lg font-semibold mb-3">
-                        Our Professionals
+                        Đăng ký để nhận ưu đãi
                     </p>
                     <div className="relative inline-block">
                         <h2 className="text-4xl lg:text-5xl font-bold">
-                            Meet our Teachers
+                            Danh Sách Các Khoá Học
                         </h2>
                         <div className="absolute top-1/2 right-0 w-32 h-3 bg-[rgb(var(--tertiary-rgb))] opacity-70 -z-10 transform translate-x-6"></div>
                     </div>
@@ -144,16 +222,10 @@ const Section04 = () => {
                         </Card>
                     ))}
                 </div>
-                <div className="flex justify-center">
-                    <button className="px-1 py-1 bg-[rgb(var(--secondary-rgb))] text-white rounded-full font-medium flex justify-between items-center gap-4 hover:opacity-80 transition-colors">
-                        <span className="pl-6">Xem tất cả</span>
-                        <span className="p-3 bg-white rounded-full"><ArrowRight color="#000" /></span>
-                    </button>
-                </div>
             </div>
         </section>
     );
 };
 
-export default Section04
+export default Section01
     ;

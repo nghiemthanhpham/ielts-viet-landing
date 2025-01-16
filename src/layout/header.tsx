@@ -6,14 +6,17 @@ import { Button } from "@/components/ui/button";
 import Image from 'next/image';
 import { AlignJustify, PhoneCall } from 'lucide-react';
 import { IMAGES } from '@/utils/images';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
+
+    const pathname = usePathname()
 
     const navigationItems = [
         { label: 'TRANG CHỦ', href: '/' },
         { label: 'VỀ CHÚNG TÔI', href: '/ve-chung-toi' },
         { label: 'KHOÁ HỌC', href: '/khoa-hoc' },
-        { label: 'TIPS IELTS', href: '/tips-ielts' },
+        { label: 'TIPS IELTS', href: '/tips' },
         { label: 'LIÊN HỆ', href: '/lien-he' },
     ];
 
@@ -38,7 +41,7 @@ const Header = () => {
                             <Link
                                 key={item.label}
                                 href={item.href}
-                                className={`text-[16px] font-medium transition-colors hover:text-[rgb(var(--secondary-rgb))] ${item.label === 'TRANG CHỦ' ? 'text-[rgb(var(--secondary-rgb))]' : 'text-gray-600'
+                                className={`text-[16px] font-medium transition-colors hover:text-[rgb(var(--secondary-rgb))] ${item.href === pathname ? 'text-[rgb(var(--secondary-rgb))]' : 'text-gray-500'
                                     }`}
                             >
                                 {item.label}

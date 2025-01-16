@@ -14,42 +14,42 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
     {
         id: '1',
-        title: 'The Surprising Reason College Tuition Is Crazy Expensive',
-        date: '25 Sep 2023',
-        author: 'By Anne William',
-        imageUrl: 'https://wpocean.com/html/tf/eduko/assets/images/blog/img-1.jpg',
+        title: 'Tổng hợp tài liệu luyện thi IELTS cho học sinh cấp 2 hiệu quả',
+        date: '16 / 01 / 2025',
+        author: 'Thuỳ Trang',
+        imageUrl: 'https://ieltscity.vn/wp-content/uploads/2024/07/tai-lieu-luyen-thi-ielts-cho-hoc-sinh-cap-2-1024x576.jpg',
         link: '#'
     },
     {
         id: '2',
-        title: 'Become a great WordPress & PHP developer.',
-        date: '26 Sep 2023',
-        author: 'By Robert Fox',
-        imageUrl: 'https://wpocean.com/html/tf/eduko/assets/images/blog/img-2.jpg',
+        title: 'Top 19 sách học IELTS cho người mất gốc hay nhất',
+        date: '16 / 01 / 2025',
+        author: 'Kim Hoàng',
+        imageUrl: 'https://ieltscity.vn/wp-content/uploads/2023/03/sach-hoc-ielts-cho-nguoi-mat-goc-1024x575.jpg',
         link: '#'
     },
     {
         id: '3',
-        title: 'A critical review of mobile learning integration',
-        date: '28 Sep 2023',
-        author: 'By Devon Lane',
-        imageUrl: 'https://wpocean.com/html/tf/eduko/assets/images/blog/img-3.jpg',
+        title: '7 Trang web học IELTS Online miễn phí chất lượng 2025',
+        date: '16 / 01 / 2025',
+        author: 'Kim Ngân',
+        imageUrl: 'https://ieltscity.vn/wp-content/uploads/2023/05/hoc-ielts-online-mien-phi-1024x575.jpg',
         link: '#'
     }
 ];
 
 const Section07 = () => {
     return (
-        <section className="max-w-7xl mx-auto px-3 pb-20 pt-12">
+        <section className="w-full lg:w-3/4 px-6 lg:px-0 pb-20 pt-12">
             <div className="text-center mb-12">
                 <div className="text-center space-y-1">
-                    <p className="text-[#eee] text-md lg:text-lg font-semibold mb-3">Our Blogs</p>
+                    <p className="text-[#eee] text-md lg:text-lg font-semibold mb-3">Tài Liệu Học Tập</p>
                     <h2 className="text-4xl mx-2 lg:text-5xl font-bold text-[rgb(var(--quaternary-rgb))]">
-                        Our Latest News
+                        Các Tips Học IELT Hiệu Quả
                     </h2>
                 </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-3 lg:mx-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {blogPosts.map((post) => (
                     <article
                         key={post.id}
@@ -73,7 +73,7 @@ const Section07 = () => {
                             </h3>
                             <div
                                 className="inline-block text-[rgb(var(--secondary-rgb))] font-medium hover:opacity-60 transition-colors duration-300 underline-offset-2 cursor-pointer">
-                                Continue Reading
+                                Xem chi tiết
                             </div>
                         </div>
                     </article>
