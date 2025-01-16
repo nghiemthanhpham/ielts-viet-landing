@@ -1,10 +1,7 @@
 'use client'
 
-import { Card, CardContent } from "@/components/ui/card";
-import { HELPER } from "@/utils/helper";
-import { ArrowRight, Quote, Star } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
 
 interface Testimonial {
     id: string;
@@ -42,8 +39,6 @@ const testimonials: Testimonial[] = [
     }
 ];
 
-
-
 const StarRating = ({ rating }: { rating: number }) => {
     return (
         <div className="flex gap-1">
@@ -64,8 +59,8 @@ const Section05 = () => {
         <section className="max-w-7xl mx-auto pb-20 pt-12">
             <div className="text-center mb-12">
                 <div className="text-center space-y-1">
-                    <p className="text-[#eee] text-[17px] lg:text-[20px] font-semibold mb-3">Testimonials</p>
-                    <h2 className="text-3xl mx-2 lg:text-[55px] font-bold text-[rgb(var(--quaternary-rgb))]">
+                    <p className="text-[#eee] text-md lg:text-lg font-semibold mb-3">Testimonials</p>
+                    <h2 className="text-4xl mx-2 lg:text-5xl font-bold text-[rgb(var(--quaternary-rgb))]">
                         What Our Students Says About Us
                     </h2>
                 </div>

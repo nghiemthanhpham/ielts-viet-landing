@@ -65,11 +65,16 @@ const Section04 = () => {
     return (
         <section className="w-full">
             <div className="space-y-12">
-                <div className="text-center space-y-1">
-                    <p className="text-[rgb(var(--secondary-rgb))] text-[17px] lg:text-[20px] font-semibold mb-3">Popular Courses</p>
-                    <h2 className="text-3xl mx-2 lg:text-[55px] font-bold">
-                        Discover Your Favorite Courses
-                    </h2>
+                <div className="text-center">
+                    <p className="text-[rgb(var(--secondary-rgb))] text-md lg:text-lg font-semibold mb-3">
+                        Our Professionals
+                    </p>
+                    <div className="relative inline-block">
+                        <h2 className="text-4xl lg:text-5xl font-bold">
+                            Meet our Teachers
+                        </h2>
+                        <div className="absolute top-1/2 right-0 w-32 h-3 bg-[rgb(var(--tertiary-rgb))] opacity-70 -z-10 transform translate-x-6"></div>
+                    </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-6 lg:mx-0">
                     {courses?.map((course: Course) => (

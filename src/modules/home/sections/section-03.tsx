@@ -61,12 +61,13 @@ const Section03 = () => {
     return (
         <div className="max-w-7xl mx-auto pb-20 pt-12">
             <div className="text-center mb-12">
-                <div className="text-center space-y-1">
-                    <p className="text-[#eee] text-[17px] lg:text-[20px] font-semibold mb-3">Our Courses</p>
-                    <h2 className="text-3xl mx-2 lg:text-[55px] font-bold text-[rgb(var(--quaternary-rgb))]">
+                <div className="text-center">
+                    <p className="text-[#eee] text-md lg:text-lg font-semibold mb-3">Our Courses</p>
+                    <h2 className="text-4xl mx-2 lg:text-5xl font-bold text-[rgb(var(--quaternary-rgb))]">
                         Explore Courses By Category
                     </h2>
                 </div>
+                
             </div>
             <div className="relative">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-6 lg:mx-2">

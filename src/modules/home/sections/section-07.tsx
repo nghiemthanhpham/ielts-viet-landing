@@ -43,13 +43,12 @@ const Section07 = () => {
         <section className="max-w-7xl mx-auto px-3 pb-20 pt-12">
             <div className="text-center mb-12">
                 <div className="text-center space-y-1">
-                    <p className="text-[#eee] text-[17px] lg:text-[20px] font-semibold mb-3">Our Blogs</p>
-                    <h2 className="text-3xl mx-2 lg:text-[55px] font-bold text-[rgb(var(--quaternary-rgb))]">
+                    <p className="text-[#eee] text-md lg:text-lg font-semibold mb-3">Our Blogs</p>
+                    <h2 className="text-4xl mx-2 lg:text-5xl font-bold text-[rgb(var(--quaternary-rgb))]">
                         Our Latest News
                     </h2>
                 </div>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-3 lg:mx-0">
                 {blogPosts.map((post) => (
                     <article

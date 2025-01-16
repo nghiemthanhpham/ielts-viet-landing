@@ -2,6 +2,7 @@
 
 import { Component, FolderCode, Target, TvMinimal } from "lucide-react";
 
+
 interface CourseCategory {
     id: string;
     title: string;
@@ -57,11 +58,11 @@ const categories: CourseCategory[] = [
     }
 ];
 
-const Section06 = () => {
+const Section03 = () => {
     return (
         <div className="max-w-7xl mx-auto px-1">
             <div className="text-center mb-12">
-                    <p className="text-[rgb(var(--secondary-rgb))] text-md lg:text-lg font-semibold mb-3">
+                    <p className="text-[rgb(var(--secondary-rgb))] text-lg font-semibold mb-3">
                         Our Professionals
                     </p>
                     <div className="relative inline-block">
@@ -92,4 +93,4 @@ const Section06 = () => {
     );
 };
 
-export default Section06;
+export default Section03;

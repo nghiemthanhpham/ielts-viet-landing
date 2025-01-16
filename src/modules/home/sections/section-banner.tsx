@@ -10,13 +10,13 @@ const SectionBanner = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                 <div className="space-y-6">
                     <div className="space-y-2">
-                        <p className="text-[rgb(var(--secondary-rgb))] text-[17px] lg:text-[20px] font-semibold">Trung Tâm Đào Tạo Anh Ngữ</p>
-                        <h1 className="leading-tight text-3xl lg:text-[50px] font-bold text-gray-900">
+                        <p className="text-[rgb(var(--secondary-rgb))] text-md lg:text-lg font-semibold">Trung Tâm Đào Tạo Anh Ngữ</p>
+                        <h1 style={{ lineHeight: '1.3' }} className="text-4xl lg:text-5xl font-bold text-gray-900">
                             Đăng Ký Sớm Để Nhận Ngay Ưu Đãi
                         </h1>
                     </div>
                     <p className="text-gray-600 text-lg">
-                    Học IELTS cùng chuyên gia đầu ngành. Hỗ trợ toàn diện từ giáo viên bản ngữ, cựu giám khảo và chuyên gia IELTS Việt Nam.
+                        Học IELTS cùng chuyên gia đầu ngành. Hỗ trợ toàn diện từ giáo viên bản ngữ, cựu giám khảo và chuyên gia IELTS Việt Nam.
                     </p>
                     <div className="flex items-center gap-4">
                         <Button className="text-[16px] rounded-full px-10 bg-[rgb(var(--secondary-rgb))] hover:bg-[rgb(var(--secondary-rgb))] hover:opacity-80 text-white">

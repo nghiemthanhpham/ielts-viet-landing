@@ -1,10 +1,10 @@
 "use client"
 
-import ContactClient from "@/modules/contact";
+import AboutClient from "@/modules/about";
 import { Loader } from "lucide-react";
 import React, { Suspense } from 'react';
 
-export default function Contact() {
+export default function About() {
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <Suspense
@@ -15,7 +15,7 @@ export default function Contact() {
           </div>
         }
       >
-        <ContactClient />
+        <AboutClient />
       </Suspense>
     </div>
   );
