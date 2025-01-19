@@ -1,6 +1,7 @@
 'use client'
 
 import Image from "next/image";
+import Link from "next/link";
 
 interface BlogPost {
     id: string;
@@ -81,28 +82,30 @@ const Section01 = () => {
                     <article
                         key={post.id}
                         className="relative overflow-hidden group bg-white rounded-lg border hover:shadow-md transition-shadow duration-300">
-                        <div className="relative overflow-hidden group aspect-[4/3]">
-                            <Image
-                                src={post.imageUrl}
-                                alt={post.title}
-                                className="w-full h-full transform transition-transform duration-500 group-hover:scale-105 object-cover"
-                                width={1000}
-                                height={1000} />
-                        </div>
-                        <div className="p-6">
-                            <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
-                                <time>{post.date}</time>
-                                <span className="text-gray-400">•</span>
-                                <span>{post.author}</span>
+                        <Link href='/tips/1'>
+                            <div className="relative overflow-hidden group aspect-[4/3]">
+                                <Image
+                                    src={post.imageUrl}
+                                    alt={post.title}
+                                    className="w-full h-full transform transition-transform duration-500 group-hover:scale-105 object-cover"
+                                    width={1000}
+                                    height={1000} />
                             </div>
-                            <h3 className="text-xl font-bold mb-4 line-clamp-2">
-                                {post.title}
-                            </h3>
-                            <div
-                                className="inline-block text-[rgb(var(--secondary-rgb))] font-medium hover:opacity-60 transition-colors duration-300 underline-offset-2 cursor-pointer">
-                                Continue Reading
+                            <div className="p-6">
+                                <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+                                    <time>{post.date}</time>
+                                    <span className="text-gray-400">•</span>
+                                    <span>{post.author}</span>
+                                </div>
+                                <h3 className="text-xl font-bold mb-4 line-clamp-2">
+                                    {post.title}
+                                </h3>
+                                <div
+                                    className="inline-block text-[rgb(var(--secondary-rgb))] font-medium hover:opacity-60 transition-colors duration-300 underline-offset-2 cursor-pointer">
+                                    Continue Reading
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </article>
                 ))}
             </div>
