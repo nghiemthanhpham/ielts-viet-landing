@@ -1,7 +1,4 @@
-import Script from 'next/script';
 import React, { useEffect, useRef } from 'react';
-
-// Extend the Window interface to include the Odometer type
 declare global {
     interface Window {
         Odometer: any;
@@ -19,12 +16,10 @@ const StatisticItem = ({ number, label }: { number: number; label: string }) => 
                 value: 0,
                 format: '(,ddd)',
             });
-
             let hasRun = false;
             const options = {
                 threshold: [0, 0.9],
             };
-
             const callback = (entries: IntersectionObserverEntry[]) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
@@ -35,13 +30,10 @@ const StatisticItem = ({ number, label }: { number: number; label: string }) => 
                     }
                 });
             };
-
             const observer = new IntersectionObserver(callback, options);
-
             if (currentRef) {
                 observer.observe(currentRef);
             }
-
             return () => {
                 if (currentRef) {
                     observer.unobserve(currentRef);

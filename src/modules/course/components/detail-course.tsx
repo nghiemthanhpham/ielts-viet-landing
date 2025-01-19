@@ -4,36 +4,7 @@ import { IMAGES } from "@/utils/images";
 import { CircleCheckBig, Trophy } from "lucide-react";
 import Image from "next/image";
 
-interface CourseDetails {
-  title: string;
-  startLevel: string;
-  endLevel: string;
-  guarantee: string;
-  method: string;
-  duration: string;
-  totalHours: string;
-  price: string;
-  monthlyPayment: string;
-  description: string;
-  imageUrl: string;
-}
-
-
-export default function CourseDetail(
-  //   {
-  //   title,
-  //   startLevel,
-  //   endLevel,
-  //   guarantee,
-  //   method,
-  //   duration,
-  //   totalHours,
-  //   price,
-  //   monthlyPayment,
-  //   description,
-  //   imageUrl,
-  // }: CourseDetails
-) {
+export default function CourseDetail() {
   return (
     <div className="w-full mx-auto p-6">
       <div className="grid md:grid-cols-12 gap-8 items-start">
@@ -46,7 +17,6 @@ export default function CourseDetail(
             className="object-contain"
           />
         </div>
-
         <div className="space-y-6 col-span-7">
           <h1 className="text-3xl font-bold text-gray-900">Khoá học IELTS Foundation</h1>
           <div className="space-y-3">

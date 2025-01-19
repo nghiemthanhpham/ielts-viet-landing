@@ -72,7 +72,6 @@ export const Sidebar = () => {
           </Link>
         </div>
       </div>
-
       <div>
         <h3 className="font-bold mb-4">Related Posts</h3>
         <div className="space-y-4">
@@ -92,7 +91,6 @@ export const Sidebar = () => {
                     className="rounded-lg object-cover"
                   />
                 </div>
-
                 <div className="flex-1">
                   <h3 className="text-gray-900 font-medium group-hover:text-blue-600 transition-colors">
                     {post.title}
@@ -106,7 +104,6 @@ export const Sidebar = () => {
           </div>
         </div>
       </div>
-
     </aside>
   );
 };
