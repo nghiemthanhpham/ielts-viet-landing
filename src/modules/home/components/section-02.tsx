@@ -6,12 +6,12 @@ const Section02 = () => {
     return (
         <section className="w-full">
             <div className="space-y-12">
-                <div className="text-center">
+                <div className="text-center mx-5">
                     <p className="text-[rgb(var(--secondary-rgb))] text-lg font-semibold mb-3">
                         Cam kết đầu ra
                     </p>
                     <div className="relative inline-block">
-                        <h2 className="text-4xl lg:text-5xl font-bold">
+                        <h2 className="text-4xl lg:text-5xl font-bold leading-snug">
                             Luyện IELTS Cam Kết Đầu Ra
                         </h2>
                         <div className="hidden lg:flex absolute top-1/2 right-0 w-32 h-3 bg-[rgb(var(--tertiary-rgb))] opacity-70 -z-10 transform translate-x-6"></div>

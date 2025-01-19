@@ -34,7 +34,7 @@ export const Sidebar = () => {
     }
   ];
   return (
-    <aside className="w-80 space-y-8">
+    <aside className="space-y-8">
       <div className="bg-gray-100 p-6 rounded-lg text-center">
         <Image
           src="https://res.cloudinary.com/farmcode/image/upload/v1737017508/nduhew4idfpqqhucorem.png"
@@ -72,36 +72,33 @@ export const Sidebar = () => {
           </Link>
         </div>
       </div>
-      <div>
-        <h3 className="font-bold mb-4">Related Posts</h3>
-        <div className="space-y-4">
-          <div className="space-y-4">
-            {relatedPosts.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="flex items-center space-x-4 group"
-              >
-                <div className="flex-shrink-0">
-                  <Image
-                    src={post.thumbnail}
-                    alt={post.title}
-                    width={80}
-                    height={60}
-                    className="rounded-lg object-cover"
-                  />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-gray-900 font-medium group-hover:text-blue-600 transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {post.date}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
+      <div className="space-y-4">
+        <h3 className="font-bold text-lg mb-4">Related Posts</h3>
+        <div className="grid gap-4">
+          {relatedPosts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="flex items-start space-x-4 group"
+            >
+              <div className="flex-shrink-0 w-20 h-16 relative">
+                <Image
+                  src={post.thumbnail}
+                  alt={post.title}
+                  fill
+                  className="rounded-lg object-cover"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-gray-900 font-medium group-hover:text-blue-600 transition-colors text-sm md:text-base line-clamp-2">
+                  {post.title}
+                </h3>
+                <p className="text-xs md:text-sm text-gray-500 mt-1">
+                  {post.date}
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </aside>

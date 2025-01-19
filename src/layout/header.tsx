@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import Image from 'next/image';
@@ -9,6 +9,32 @@ import { IMAGES } from '@/utils/images';
 import { usePathname } from 'next/navigation';
 
 const Header = () => {
+    const [open, setOpen] = useState(false);
+    const [openLogin, setOpenLogin] = useState(false);
+    const modalRef = useRef<HTMLDivElement | null>(null);
+    const scrollToSection = (sectionId: string) => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (event: any) => {
+            if (modalRef.current && !modalRef.current.contains(event.target)) {
+                setOpenLogin(false);
+            }
+        };
+
+        if (openLogin) {
+            document.addEventListener("mousedown", handleClickOutside);
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+            document.body.style.overflow = "";
+        };
+    }, [openLogin]);
 
     const pathname = usePathname()
 
@@ -24,8 +50,30 @@ const Header = () => {
         <header className="w-full flex justify-center items-center border-b">
             <div className="w-full lg:w-3/4 px-6 lg:px-0">
                 <div className="flex items-center justify-between h-24">
-                    <div className='flex lg:hidden'>
-                        <AlignJustify />
+                    <div className="flex lg:hidden flex-col justify-center">
+                        <button
+                            className="text-gray-500 w-10 h-10 relative focus:outline-none"
+                            onClick={() => setOpen(!open)}
+                        >
+                            <span className="sr-only">Open main menu</span>
+                            <div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                <span
+                                    aria-hidden="true"
+                                    className={`block absolute h-0.5 w-5 bg-current transform transition duration-300 ease-in-out ${open ? 'rotate-45 translate-y-0' : '-translate-y-1.5'
+                                        }`}
+                                ></span>
+                                <span
+                                    aria-hidden="true"
+                                    className={`block absolute h-0.5 w-5 bg-current transform transition duration-300 ease-in-out ${open ? 'opacity-0' : 'opacity-100'
+                                        }`}
+                                ></span>
+                                <span
+                                    aria-hidden="true"
+                                    className={`block absolute h-0.5 w-5 bg-current transform transition duration-300 ease-in-out ${open ? '-rotate-45 translate-y-0' : 'translate-y-1.5'
+                                        }`}
+                                ></span>
+                            </div>
+                        </button>
                     </div>
                     <Link href="/" className="hidden lg:flex items-center gap-2">
                         <Image
@@ -63,7 +111,39 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
+
             </div>
+            {open && (
+                <div className="absolute top-24 left-0 h-[830px] w-full bg-white shadow-md z-20">
+                    <ul className="flex flex-col space-y-10 py-10 px-5">
+                        <li className='font-bold '>
+                            <a href={`#`} className="text-gray-700 hover:text-black">
+                                Trang chủ
+                            </a>
+                        </li>
+                        <li className='font-bold '>
+                            <a href={`#`} className="text-gray-700 hover:text-black">
+                                Về chúng tôi
+                            </a>
+                        </li>
+                        <li className='font-bold '>
+                            <a href={`#`} className="text-gray-700 hover:text-black">
+                                Khóa học
+                            </a>
+                        </li>
+                        <li className='font-bold '>
+                            <a href={`#`} className="text-gray-700 hover:text-black">
+                                Tips IELTS
+                            </a>
+                        </li>
+                        <li className='font-bold '>
+                            <a href={`#`} className="text-gray-700 hover:text-black">
+                                Liên hệ
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            )}
         </header>
     );
 };

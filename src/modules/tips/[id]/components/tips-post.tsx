@@ -19,36 +19,37 @@ interface BlogPostProps {
 
 export const BlogPost = ({ title, author, date, comments, content }: BlogPostProps) => {
   return (
-    <article className="max-w-4xl mx-auto bg-white">
+    <article className="w-full bg-white">
       <div className="space-y-4">
-        <div className='w-full h-1/3'>
+        <div className='w-full aspect-video relative'>
           <Image
             src="https://res.cloudinary.com/farmcode/image/upload/v1737130585/ielts-viet/blog-detail_fko2ki.jpg"
-            alt="logo"
-            width={1000}
-            height={1000}
-            className="w-full h-1/3"
+            alt="blog cover"
+            fill
+            className="object-cover rounded-lg"
           />
         </div>
-        <div className="flex items-center text-sm text-gray-500 space-x-4">
+        <div className="flex flex-wrap items-center text-xs md:text-sm text-gray-500 space-x-2 md:space-x-4">
           <span>BY {author.name.toUpperCase()}</span>
           <span>•</span>
           <span>COMMENTS {comments}</span>
           <span>•</span>
           <span>{date}</span>
         </div>
-        <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
-        <div className="prose max-w-none">{content}</div>
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900">{title}</h1>
+        <div className="prose max-w-none text-sm md:text-base">{content}</div>
         <div className="border-t border-b py-4 mt-8">
-          <div className="flex items-center space-x-4">
+          <div className="flex flex-wrap items-center gap-2 md:gap-4">
             <span className="font-medium">SHARE:</span>
-            <Link href="#" className="text-gray-500 hover:text-gray-900">Facebook</Link>
-            <Link href="#" className="text-gray-500 hover:text-gray-900">Twitter</Link>
-            <Link href="#" className="text-gray-500 hover:text-gray-900">LinkedIn</Link>
-            <Link href="#" className="text-gray-500 hover:text-gray-900">Pinterest</Link>
+            <div className="flex gap-2 md:gap-4">
+              <Link href="#" className="text-gray-500 hover:text-gray-900">Facebook</Link>
+              <Link href="#" className="text-gray-500 hover:text-gray-900">Twitter</Link>
+              <Link href="#" className="text-gray-500 hover:text-gray-900">LinkedIn</Link>
+              <Link href="#" className="text-gray-500 hover:text-gray-900">Pinterest</Link>
+            </div>
           </div>
         </div>
-        <div className="flex items-center space-x-4 py-6">
+        <div className="flex items-start space-x-4 py-6">
           <Image
             src="https://res.cloudinary.com/farmcode/image/upload/v1737017508/nduhew4idfpqqhucorem.png"
             alt="logo"
